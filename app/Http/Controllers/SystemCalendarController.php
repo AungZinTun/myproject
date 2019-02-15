@@ -87,7 +87,7 @@ class SystemCalendarController extends Controller
             $events[]       = [ 
                  'title' => $dataFieldValue, 
                  'start' => $crudFieldValue, 
-                 'url'   => route('admin.patients.edit', $patient->id),
+                 'url'   => route('patients.edit', $patient->id),
                  'color' => $color,
             ]; 
          } 
