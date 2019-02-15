@@ -2,16 +2,16 @@
 
 $factory->define(App\Patient::class, function (Faker\Generator $faker) {
     return [
-        "user_id" => factory('App\User')->create(),
-        "township_id" => factory('App\Township')->create(),
+        "user_id" =>  collect(["3","2"])->random(),
+        "township_id" =>  collect(["1","2",])->random(),
         "mpi_code" => $faker->name,
         "date_enrolled" => $faker->date("Y-m-d", $max = 'now'),
         "pmct_code" => $faker->name,
         "name" => $faker->name,
         "dob" => $faker->date("Y-m-d", $max = 'now'),
         "address" => $faker->name,
-        "gravida" => $faker->randomNumber(2),
-        "parity" => $faker->randomNumber(2),
+        "gravida" =>  collect(["0","1","2","3",])->random(),
+        "parity" =>collect(["0","1","2","3",])->random(),
         "edd" => $faker->date("Y-m-d", $max = 'now'),
         "hiv_status" => collect(["1","0",])->random(),
         "hiv_test_date" => $faker->date("Y-m-d", $max = 'now'),

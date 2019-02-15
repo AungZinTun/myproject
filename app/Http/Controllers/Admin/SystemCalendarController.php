@@ -12,24 +12,24 @@ class SystemCalendarController extends Controller
     {
         $events = []; 
 
-        foreach (\App\Patient::all() as $patient) { 
-           $crudFieldValue = $patient->getOriginal('date_enrolled'); 
+        // foreach (\App\Patient::all() as $patient) { 
+        //    $crudFieldValue = $patient->getOriginal('date_enrolled'); 
 
-           if (! $crudFieldValue) {
-               continue;
-           }
+        //    if (! $crudFieldValue) {
+        //        continue;
+        //    }
 
-           $eventLabel     = $patient->name; 
-           $prefix         = ''; 
-           $suffix         = 'enrolled'; 
-           $dataFieldValue = trim($prefix . " " . $eventLabel . " " . $suffix); 
-           $events[]       = [ 
-                'title' => $dataFieldValue, 
-                'start' => $crudFieldValue, 
-                'url'   => route('admin.patients.show', $patient->id), 
-                'color'=> 'lightgrey'
-           ]; 
-        } 
+        //    $eventLabel     = $patient->name; 
+        //    $prefix         = ''; 
+        //    $suffix         = 'enrolled'; 
+        //    $dataFieldValue = trim($prefix . " " . $eventLabel . " " . $suffix); 
+        //    $events[]       = [ 
+        //         'title' => $dataFieldValue, 
+        //         'start' => $crudFieldValue, 
+        //         'url'   => route('admin.patients.show', $patient->id), 
+        //         'color'=> 'lightgrey'
+        //    ]; 
+        // } 
 
         foreach (\App\Patient::all() as $patient) { 
            $crudFieldValue = $patient->getOriginal('edd'); 
@@ -74,6 +74,7 @@ class SystemCalendarController extends Controller
             $dod = $patient->getOriginal('dod');
             $eid_due = '90';
             $crudFieldValue =  date('Y-m-d', strtotime($dod.' + '.$eid_due.'days'));
+            if ($crudFieldValue <= now() ) {$color='red';} else { $color='lightgrey';}
  
             if (! $crudFieldValue) {
                 continue;
@@ -87,7 +88,7 @@ class SystemCalendarController extends Controller
                  'title' => $dataFieldValue, 
                  'start' => $crudFieldValue, 
                  'url'   => route('admin.patients.edit', $patient->id),
-                 'color' => 'red'
+                 'color' => $color,
             ]; 
          } 
 

@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">{{ ucfirst(config('app.name')) }} @lang('quickadmin.qa_login')</div>
+                <div class="panel-heading"> 
+                <img src="{{ asset('nap 25.png')}}" alt="">
+                {{ ucfirst(config('app.name')) }} @lang('quickadmin.qa_login')</div>
                 <div class="panel-body">
                     
                     @if (count($errors) > 0)

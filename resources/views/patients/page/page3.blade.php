@@ -38,26 +38,33 @@
        
         </div>
 
-        <div class="panel-body">
+        <div class="panel-body bg-success">
 
 
 
           <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-4 form-group">
                     {!! Form::label('hiv_test_date', trans('quickadmin.patients.fields.hiv-test-date').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('hiv_test_date', old('hiv_test_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
+                   
+                </div>
+                <div class="col-xs-8">
+                {!! Form::text('hiv_test_date', old('hiv_test_date'), ['class' => 'form-control date', 'placeholder' => '', "required"=>""]) !!}
                     <p class="help-block"></p>
                     @if($errors->has('hiv_test_date'))
                         <p class="help-block">
                             {{ $errors->first('hiv_test_date') }}
                         </p>
                     @endif
+
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-4 form-group">
                     {!! Form::label('hiv_test_place', trans('quickadmin.patients.fields.hiv-test-place').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('hiv_test_place', old('hiv_test_place'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                  
+                </div>
+                <div class="col-xs-8">
+                {!! Form::text('hiv_test_place', old('hiv_test_place'), ['class' => 'form-control', 'placeholder' => '', "required"=>""]) !!}
                     <p class="help-block"></p>
                     @if($errors->has('hiv_test_place'))
                         <p class="help-block">
@@ -70,37 +77,47 @@
                    
                 
     
-            <!-- Lifelong ART ဆေး 	 -->
             <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('current_art_status', trans('quickadmin.patients.fields.current-art-status').'', ['class' => 'control-label']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('current_art_status'))
-                        <p class="help-block">
-                            {{ $errors->first('current_art_status') }}
-                        </p>
-                    @endif
-                    <div>
-                        <label>
-                            {!! Form::radio('current_art_status', '1', false, []) !!}
-                            On ART
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            {!! Form::radio('current_art_status', '0', false, []) !!}
-                            Not on ART
-                        </label>
-                    </div>
-                    
+                <div class="col-xs-4">
+                {!! Form::label('current_art_status', trans('quickadmin.patients.fields.current-art-status').'', ['class' => 'control-label']) !!}
                 </div>
-            </div>
+                <div class="col-xs-8">
+            
+                    <p class="help-block"></p>
+                            @if($errors->has('current_art_status'))
+                                <p class="help-block">
+                                    {{ $errors->first('current_art_status') }}
+                                </p>
+                            @endif
+
+                            <label>
+                                    {!! Form::radio('current_art_status', '1', false, ["onclick"=>"artCheck();", "id"=>"onartcheck" , 'required'=>'']) !!}
+                                    On ART
+                                </label>
+                    
+                                <label>
+                                    {!! Form::radio('current_art_status', '0', false, ["onclick"=>"artCheck();","id"=>"notonartcheck", 'required'=>'']) !!}
+                                    Not on ART
+                                </label>
+                                <span id="selectOne" class='card text-danger'>
+                                    Please select ART Status!
+                                </span>
+              </div>
+         
+        
+        </div>
+
+
+        <div id="onArtTable"> 
 
            <!-- ဆေးစတင်သောက်သည့်ရက်စွဲ	  -->
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-4 form-group">
                     {!! Form::label('current_art_start_date', trans('quickadmin.patients.fields.current-art-start-date').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('current_art_start_date', old('current_art_start_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
+               
+                </div>
+                <div class="col-xs-8">
+                {!! Form::text('current_art_start_date', old('current_art_start_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
                     @if($errors->has('current_art_start_date'))
                         <p class="help-block">
@@ -113,10 +130,13 @@
 <!-- ယခုဆေးယူနေသောနေရာ၊ဌာန	 -->
 
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-4 form-group">
                     {!! Form::label('current_art_unit', trans('quickadmin.patients.fields.current-art-unit').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('current_art_unit', old('current_art_unit'), ['class' => 'form-control', 'placeholder' => 'ယခုဆေးယူနေသောနေရာ၊ဌာန	']) !!}
-                    <p class="help-block">ယခုဆေးယူနေသောနေရာ၊ဌာန	</p>
+                 
+                </div>
+                <div class="col-xs-8">
+                {!! Form::text('current_art_unit', old('current_art_unit'), ['class' => 'form-control', 'placeholder' => 'ယခုဆေးယူနေသောနေရာ၊ဌာန	']) !!}
+                 
                     @if($errors->has('current_art_unit'))
                         <p class="help-block">
                             {{ $errors->first('current_art_unit') }}
@@ -124,16 +144,22 @@
                     @endif
                 </div>
             </div>
-            <!-- ဆေးတွဲ  -->
 
+            <!-- art code -->
+
+
+         
             <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('regimen', trans('quickadmin.patients.fields.regimen').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('regimen', old('regimen'), ['class' => 'form-control', 'placeholder' => 'ဆေးတွဲ']) !!}
-                    <p class="help-block">ဆေးတွဲ</p>
-                    @if($errors->has('regimen'))
+                <div class="col-xs-4 form-group">
+                    {!! Form::label('art_code', trans('quickadmin.patients.fields.art-code').'', ['class' => 'control-label']) !!}
+                 
+                </div>
+                <div class="col-xs-8">
+                {!! Form::text('art_code', old('art_code'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('art_code'))
                         <p class="help-block">
-                            {{ $errors->first('regimen') }}
+                            {{ $errors->first('art_code') }}
                         </p>
                     @endif
                 </div>
@@ -141,187 +167,254 @@
             <!-- ဆေးသောက်ပျက်ကွက်ခြင်း 	 -->
 
             <div class="row">
-                <div class="col-xs-12 form-group">
+                <div class="col-xs-4 form-group">
                     {!! Form::label('int_treatment', trans('quickadmin.patients.fields.int-treatment').'', ['class' => 'control-label']) !!}
-                    {!! Form::hidden('int_treatment', 0) !!}
+                
+                </div>
+                <div class="col-xs-8">
+                {!! Form::hidden('int_treatment', 0) !!}
                     {!! Form::checkbox('int_treatment', 1, old('int_treatment', old('int_treatment')), []) !!}
                     <p class="help-block">ဆေးသောက်ပျက်ကွက်ခြင်း</p>
                     @if($errors->has('int_treatment'))
                         <p class="help-block">
                             {{ $errors->first('int_treatment') }}
                         </p>
-                    @endif
-                </div>
-            </div>
-            <!-- ယခင်ကအေအာတီဆေး    -->
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('previous_art_history', trans('quickadmin.patients.fields.previous-art-history').'', ['class' => 'control-label']) !!}
-                    {!! Form::hidden('previous_art_history', 0) !!}
-                    {!! Form::checkbox('previous_art_history', 1, old('previous_art_history', old('previous_art_history')), []) !!}
-                    <p class="help-block">ယခင်ကအေအာတီဆေး   </p>
-                    @if($errors->has('previous_art_history'))
-                        <p class="help-block">
-                            {{ $errors->first('previous_art_history') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <!-- သောက်ဖူးသောဆေးမှာ- -->
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('previous_art_option', trans('quickadmin.patients.fields.previous-art-option').'', ['class' => 'control-label']) !!}
-                    <p class="help-block">  သောက်ဖူးသောဆေးမှာ-</p>
-                    @if($errors->has('previous_art_option'))
-                        <p class="help-block">
-                            {{ $errors->first('previous_art_option') }}
-                        </p>
-                    @endif
-                    <div>
-                        <label>
-                            {!! Form::radio('previous_art_option', '1', false, []) !!}
-                            pARV
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            {!! Form::radio('previous_art_option', '2', false, []) !!}
-                            PEP
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            {!! Form::radio('previous_art_option', '3', false, []) !!}
-                            PreP
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            {!! Form::radio('previous_art_option', '4', false, []) !!}
-                            Lifelong ART &amp; Stopped
-                        </label>
-                    </div>
-                    
+                    @endif 
                 </div>
             </div>
 
-                 <!-- သောက်ဖူးသောဆေးတွဲ……………………………….. -->
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('previous_art_history_regimen', trans('quickadmin.patients.fields.previous-art-history-regimen').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('previous_art_history_regimen', old('previous_art_history_regimen'), ['class' => 'form-control', 'placeholder' => '     သောက်ဖူးသောဆေးတွဲ']) !!}
-                    <p class="help-block">     သောက်ဖူးသောဆေးတွဲ</p>
-                    @if($errors->has('previous_art_history_regimen'))
+               <div class="row">
+                <div class="col-xs-4 form-group">
+                    {!! Form::label('vl_test', trans('quickadmin.patients.fields.vl-test').'', ['class' => 'control-label']) !!}
+                
+                </div>
+                <div class="col-xs-8">
+                {!! Form::hidden('vl_test', 0) !!}
+                    {!! Form::checkbox('vl_test', 1, old('vl_test', old('vl_test')), []) !!}
+                    <p class="help-block">HIVပိုးကောင်ရေ(VL)</p>
+                    @if($errors->has('vl_test'))
                         <p class="help-block">
-                            {{ $errors->first('previous_art_history_regimen') }}
+                            {{ $errors->first('vl_test') }}
                         </p>
                     @endif
                 </div>
             </div>
-            <!-- အိမ်ထောင်ဖက်သွေးစစ်ဆေးခြင်း -->
+            <div class="row">
+                <div class="col-xs-4 form-group">
+                    {!! Form::label('vl_test_result', trans('quickadmin.patients.fields.vl-test-result').'', ['class' => 'control-label']) !!}
+                
+                </div>
+                <div class="col-xs-8">
+                {!! Form::number('vl_test_result', old('vl_test_result'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('vl_test_result'))
+                        <p class="help-block">
+                            {{ $errors->first('vl_test_result') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 form-group">
+                    {!! Form::label('vl_test_date', trans('quickadmin.patients.fields.vl-test-date').'', ['class' => 'control-label']) !!}
+                 
+                </div>
+                <div class="col-xs-8">
+                {!! Form::text('vl_test_date', old('vl_test_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('vl_test_date'))
+                        <p class="help-block">
+                            {{ $errors->first('vl_test_date') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+         <!-- not on art -->
+            <div class="row" id='notonArtTable'>
+                <div class="col-xs-4 form-group">
+                    {!! Form::label('no_art_reason','Reason for not On ART', ['class' => 'control-label']) !!}
+                   
+                </div>
+                <div class="col-xs-8">
+                {!! Form::text('no_art_reason', old('no_art_reason'), ['class' => 'form-control', 'placeholder' => 'အကြောင်းအရင်း']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('no_art_reason'))
+                        <p class="help-block">
+                            {{ $errors->first('no_art_reason') }}
+                        </p>
+                    @endif
+                </div>
+            </div>  
+                <!-- not on art -->
+
+         <hr class='text-primary'>
+      
 
             <!-- HIV စစ်ဆေးသည့်ရက်စွဲ -->
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('spouse_test_date', trans('quickadmin.patients.fields.spouse-test-date').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('spouse_test_date', old('spouse_test_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('spouse_test_date'))
-                        <p class="help-block">
-                            {{ $errors->first('spouse_test_date') }}
-                        </p>
-                    @endif
+          <div class="card card-primary">
+                <div class="card-header">
+                      <span class='text-success'>အိမ်ထောင်ဖက်သွေးစစ်ဆေးခြင်း</span>
+     
                 </div>
-            </div>
-            <!-- စစ်ဆေးသည့်နေရာ/ဌာန -->
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('spouse_test_place', trans('quickadmin.patients.fields.spouse-test-place').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('spouse_test_place', old('spouse_test_place'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('spouse_test_place'))
-                        <p class="help-block">
-                            {{ $errors->first('spouse_test_place') }}
-                        </p>
-                    @endif
+                <div class="card-body">
+                        <div class="row">
+                            <div class="col-xs-4 form-group">
+                                {!! Form::label('spouse_test_date', trans('quickadmin.patients.fields.spouse-test-date').'', ['class' => 'control-label']) !!}
+                            
+                            </div>
+                            <div class="col-xs-8">
+                            {!! Form::text('spouse_test_date', old('spouse_test_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('spouse_test_date'))
+                                    <p class="help-block">
+                                        {{ $errors->first('spouse_test_date') }}
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+                        <!-- စစ်ဆေးသည့်နေရာ/ဌာန -->
+                        <div class="row">
+                            <div class="col-xs-4 form-group">
+                                {!! Form::label('spouse_test_place', trans('quickadmin.patients.fields.spouse-test-place').'', ['class' => 'control-label']) !!}
+                            
+                            </div>
+                            <div class="col-xs-8">
+                            {!! Form::text('spouse_test_place', old('spouse_test_place'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                                <p class="help-block"></p>
+                                @if($errors->has('spouse_test_place'))
+                                    <p class="help-block">
+                                        {{ $errors->first('spouse_test_place') }}
+                                    </p>
+                                @endif
+                                </div>
+                        </div>
+                        <!-- အဖြေ 	 -->
+                        <div class="row">
+                            <div class="col-xs-4 form-group">
+                                {!! Form::label('spouse_test_result', trans('quickadmin.patients.fields.spouse-test-result').'', ['class' => 'control-label']) !!}                    
+                            </div>
+                            <div class="col-xs-8">
+                            <p class="help-block"></p>
+                                @if($errors->has('spouse_test_result'))
+                                    <p class="help-block">
+                                        {{ $errors->first('spouse_test_result') }}
+                                    </p>
+                                @endif
+                                <div>
+                                    <label>
+                                        {!! Form::radio('spouse_test_result', '1', false, ["onclick"=>"referCheck();", "id"=>"spousePositive"]) !!}
+                                        Reactive 
+                                    </label>
+                            
+                                    <label>
+                                        {!! Form::radio('spouse_test_result', '0', false, ["onclick"=>"referCheck();"]) !!}
+                                        Non Reactive
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ARVဆေးရရှိရန် ညွှန်းပို့ခြင်း 	 -->
+                        <div class="row" id='referTo'>
+                            <div class="col-xs-4 form-group">
+                                {!! Form::label('spouse_art_refer', trans('quickadmin.patients.fields.spouse-art-refer').'', ['class' => 'control-label']) !!}                   
+                                <p class="help-block">ARVဆေးရရှိရန် ညွှန်းပို့ခြင်း</p>
+                            </div>
+                            <div class="col-xs-8">
+                        
+                                @if($errors->has('spouse_art_refer'))
+                                    <p class="help-block">
+                                        {{ $errors->first('spouse_art_refer') }}
+                                    </p>
+                                @endif
+                                <div>
+                                    <label>
+                                        {!! Form::radio('spouse_art_refer', '1', false, []) !!}
+                                        Yes
+                                    </label>
+                            
+                                    <label>
+                                        {!! Form::radio('spouse_art_refer', '0', false, []) !!}
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                
                 </div>
-            </div>
-            <!-- အဖြေ 	 -->
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('spouse_test_result', trans('quickadmin.patients.fields.spouse-test-result').'', ['class' => 'control-label']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('spouse_test_result'))
-                        <p class="help-block">
-                            {{ $errors->first('spouse_test_result') }}
-                        </p>
-                    @endif
-                    <div>
-                        <label>
-                            {!! Form::radio('spouse_test_result', '1', false, []) !!}
-                            Reactive 
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            {!! Form::radio('spouse_test_result', '0', false, []) !!}
-                            Non Reactive
-                        </label>
-                    </div>
-                    
-                </div>
-            </div>
-            <!-- ARVဆေးရရှိရန် ညွှန်းပို့ခြင်း 	 -->
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('spouse_art_refer', trans('quickadmin.patients.fields.spouse-art-refer').'', ['class' => 'control-label']) !!}
-                    <p class="help-block">ARVဆေးရရှိရန် ညွှန်းပို့ခြင်း</p>
-                    @if($errors->has('spouse_art_refer'))
-                        <p class="help-block">
-                            {{ $errors->first('spouse_art_refer') }}
-                        </p>
-                    @endif
-                    <div>
-                        <label>
-                            {!! Form::radio('spouse_art_refer', '1', false, []) !!}
-                            Yes
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            {!! Form::radio('spouse_art_refer', '0', false, []) !!}
-                            No
-                        </label>
-                    </div>
-                    
-                </div>
-            </div>
+          
+          
+          </div>
                         
         </div>
     </div>
 
-    {!! Form::submit(trans('quickadmin.qa_update'), ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
-    <nav aria-label="...">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">1</a>
-    </li>
-    <li class="page-item"><a href="/patients/{{$patient->id}}/page2"> 2</a></li>    
-    <li class="page-item"><a class="page-link" href="/patients/{{$patient->id}}/page3">3</a></li>
-    <li class="page-item"><a class="page-link" href="/patients/{{$patient->id}}/page4">4</a></li>
-    <li class="page-item"><a class="page-link" href="/patients/{{$patient->id}}/page5">5</a></li>
-    <li class="page-item"><a class="page-link" href="/patients/{{$patient->id}}/page6">6</a></li>
-    <li class="page-item"><a class="page-link" href="/patients/{{$patient->id}}/page7">7</a></li>
-    <li class="page-item"><a class="page-link" href="/patients/{{$patient->id}}/page8">8</a></li>
-    <li class="page-item"><a class="page-link" href="/patients/{{$patient->id}}/page9">9</a></li>
-  </ul>
-</nav>
+    <div class="panel-footer">
+    <div class="row">
+                <div class="col-xs-4">
+                {!! Form::submit(trans('Save'), ['class' => 'btn btn-success']) !!}
+                {!! Form::close() !!}
+                </div>
+                <div class="col-xs-6 justify-content-center">
+                <a class="btn btn-link" href="/patients/{{$patient->id}}/page1"> <i class="fa fa-backward"></i>  </a>
+                <a  class="btn disabled" href="/patients/{{$patient->id}}/page4"> page 3</a>
+                <a class="btn btn-link" href="/patients/{{$patient->id}}/page4"> <i class="fa fa-forward"></i> </a>
+                </div>
+                <div class="col-xs-2">
+                <a href="/patients"  class=" text-muted">   <i class="fa fa-list text-muted"></i> Back </a>
+                </div>
+            
+            </div>
+    </div>
+
+
+
+
 
 @stop
 
 @section('javascript')
     @parent
+
+ <script>
+
+            window.onload=function(){
+                artCheck();
+                referCheck();
+            };
+
+            function referCheck() {
+                if (document.getElementById('spousePositive').checked) {
+                    document.getElementById('referTo').style.display = 'block';
+                } 
+                else {
+                    document.getElementById('referTo').style.display = 'none';
+            }
+            }
+
+            function artCheck() {
+                if (document.getElementById('onartcheck').checked) {
+                    document.getElementById('onArtTable').style.display = 'block';
+                    document.getElementById('notonArtTable').style.display = 'none';
+                    document.getElementById('selectOne').style.display = 'none';
+                
+                } 
+                else if(document.getElementById('notonartcheck').checked) {
+                    document.getElementById('notonArtTable').style.display = 'block';
+                    document.getElementById('onArtTable').style.display = 'none';
+                    document.getElementById('selectOne').style.display = 'none';
+            }
+            else {
+                document.getElementById('onArtTable').style.display = 'none';
+                document.getElementById('notonArtTable').style.display = 'none';
+                document.getElementById('selectOne').style.display = 'block';
+
+            }}
+
+</script>
+
+
 
     <script src="{{ url('adminlte/plugins/datetimepicker/moment-with-locales.min.js') }}"></script>
     <script src="{{ url('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>

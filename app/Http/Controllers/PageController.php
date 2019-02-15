@@ -7,19 +7,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\App;
 
 class PageController extends Controller
 {
+   
 
-
- 
-
-    
     /**
      * Display a listing of Patient.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function page1 ($id)
+    {
+        if (! Gate::allows('patient_edit')) {
+            return abort(401);
+        }
+        
+
+        $patient = Patient::findOrFail($id);
+
+        return view('patients.page.page1', compact('patient'));
+    }
+
    
     public function page2 ($id)
     {
@@ -27,12 +38,10 @@ class PageController extends Controller
             return abort(401);
         }
         
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $patient = Patient::findOrFail($id);
 
-        return view('patients.page.page2', compact('patient', 'users', 'townships'));
+        return view('patients.page.page2', compact('patient'));
     }
 
 
@@ -42,8 +51,7 @@ class PageController extends Controller
             return abort(401);
         }
         
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
+
 
         $patient = Patient::findOrFail($id);
 
@@ -55,13 +63,10 @@ class PageController extends Controller
         if (! Gate::allows('patient_edit')) {
             return abort(401);
         }
-        
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $patient = Patient::findOrFail($id);
 
-        return view('admin.patients.edit', compact('patient', 'users', 'townships'));
+        return view('patients.page.page4', compact('patient', 'users', 'townships'));
     }
 
     public function page5 ($id)
@@ -70,13 +75,12 @@ class PageController extends Controller
             return abort(401);
         }
         
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-
+      
         $patient = Patient::findOrFail($id);
 
-        return view('admin.patients.edit', compact('patient', 'users', 'townships'));
+        return view('patients.page.page5', compact('patient'));
     }
+    
     public function page6 ($id)
     {
         if (! Gate::allows('patient_edit')) {

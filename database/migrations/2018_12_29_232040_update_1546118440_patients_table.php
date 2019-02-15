@@ -24,10 +24,10 @@ if (!Schema::hasColumn('patients', 'address')) {
                 $table->string('address')->nullable();
                 }
 if (!Schema::hasColumn('patients', 'gravida')) {
-                $table->integer('gravida')->nullable();
+                $table->tinyInteger('gravida')->nullable()->default('0');
                 }
 if (!Schema::hasColumn('patients', 'parity')) {
-                $table->integer('parity')->nullable()->unsigned();
+                $table->tinyInteger('parity')->nullable()->default('0');
                 }
 if (!Schema::hasColumn('patients', 'edd')) {
                 $table->date('edd')->nullable();

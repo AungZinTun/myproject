@@ -110,7 +110,7 @@ class Patient extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['mpi_code', 'date_enrolled', 'pmct_code', 'name', 'dob', 'address', 'gravida', 'parity', 'edd', 'hiv_status', 'hiv_test_date', 'hiv_test_place', 'current_art_status', 'current_art_option', 'current_art_start_date', 'current_art_unit', 'regimen', 'int_treatment', 'art_code', 'vl_test', 'vl_test_result', 'vl_test_date', 'previous_art_history', 'previous_art_option', 'previous_art_history_regimen', 'spouse_test_date', 'spouse_test_place', 'spouse_test_result', 'spouse_art_refer', 'pregnancy_outcome', 'mod', 'dod', 'pod', 'baby', 'baby_wt', 'baby_outcome', 'baby_outcome_dead_date', 'pep', 'pep_option', 'pep_not_reason', 'cpt', 'cpt_not_reason', 'dna_pcr', 'dna_pcr_date', 'dna_pcr_result', 'baby_arv', 'baby_arv_no_reason', 'baby_txt_start_date', 'txt_unit', 'txt_regimen', 'baby_art_code', 'feeding_option', 'bf_stop_date', 'immunization_bcg_0', 'immunization_bcg_2', 'immunization_hpt_0', 'immunization_penta_2', 'immunization_penta_4', 'immunization_penta_6', 'immunization_pcv', 'immunization_pcv_4', 'immunization_pcv_6', 'immunization_ipv', 'immunization_ipv_4', 'immunization_ipv6', 'baby_outcome1', 'dna_pcr1', 'dna_pcr_date1', 'dna_pcr_result1', 'baby_arv1', 'feeding_option1', 'baby_outcome2', 'hiv_ab_test', 'hiv_ab_test_date', 'hiv_ab_test_not_reason', 'hiv_ab_test_result', 'dna_pcr2', 'dna_pcr_date2', 'dna_pcr_result2', 'baby_arv2', 'feeding_option2', 'immunization_mr', 'immunization_mr1', 'immunization_je', 'baby_outcome3', 'hiv_ab_test1', 'hiv_ab_test_date1', 'hiv_ab_test_not_reason1', 'hiv_ab_test_result1', 'dna_pcr3', 'dna_pcr_date3', 'dna_pcr_result3', 'baby_arv3', 'feeding_option3', 'user_id', 'township_id'];
+    protected $fillable = ['mpi_code', 'no_art_reason', 'date_enrolled', 'pmct_code', 'name', 'dob', 'address', 'gravida', 'parity', 'edd', 'hiv_status', 'hiv_test_date', 'hiv_test_place', 'current_art_status', 'current_art_option', 'current_art_start_date', 'current_art_unit', 'regimen', 'int_treatment', 'art_code', 'vl_test', 'vl_test_result', 'vl_test_date', 'previous_art_history', 'previous_art_option', 'previous_art_history_regimen', 'spouse_test_date', 'spouse_test_place', 'spouse_test_result', 'spouse_art_refer', 'pregnancy_outcome', 'mod', 'dod', 'pod', 'baby', 'baby_wt', 'baby_outcome', 'baby_outcome_dead_date', 'pep', 'pep_option', 'pep_not_reason', 'cpt', 'cpt_not_reason', 'dna_pcr', 'dna_pcr_date', 'dna_pcr_result', 'baby_arv', 'baby_arv_no_reason', 'baby_txt_start_date', 'txt_unit', 'txt_regimen', 'baby_art_code', 'feeding_option', 'bf_stop_date', 'immunization_bcg_0', 'immunization_bcg_2', 'immunization_hpt_0', 'immunization_penta_2', 'immunization_penta_4', 'immunization_penta_6', 'immunization_pcv', 'immunization_pcv_4', 'immunization_pcv_6', 'immunization_ipv', 'immunization_ipv_4', 'immunization_ipv6', 'baby_outcome1', 'dna_pcr1', 'dna_pcr_date1', 'dna_pcr_result1', 'baby_arv1', 'feeding_option1', 'baby_outcome2', 'hiv_ab_test', 'hiv_ab_test_date', 'hiv_ab_test_not_reason', 'hiv_ab_test_result', 'dna_pcr2', 'dna_pcr_date2', 'dna_pcr_result2', 'baby_arv2', 'feeding_option2', 'immunization_mr', 'immunization_mr1', 'immunization_je', 'baby_outcome3', 'hiv_ab_test1', 'hiv_ab_test_date1', 'hiv_ab_test_not_reason1', 'hiv_ab_test_result1', 'dna_pcr3', 'dna_pcr_date3', 'dna_pcr_result3', 'baby_arv3', 'feeding_option3', 'user_id', 'township_id'];
     protected $hidden = [];
     
     
@@ -205,7 +205,7 @@ class Patient extends Model
      */
     public function setGravidaAttribute($input)
     {
-        $this->attributes['gravida'] = $input ? $input : null;
+        $this->attributes['gravida'] = $input ? $input : 0;
     }
 
     /**
@@ -214,7 +214,7 @@ class Patient extends Model
      */
     public function setParityAttribute($input)
     {
-        $this->attributes['parity'] = $input ? $input : null;
+        $this->attributes['parity'] = $input ? $input : 0;
     }
 
     /**

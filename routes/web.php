@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
 
 Route::resource('patients', 'PatientController');
+Route::get('patients/{id}/page1/', 'PageController@page1');
 Route::get('patients/{id}/page2/', 'PageController@page2');
 Route::get('patients/{id}/page3/', 'PageController@page3');
 Route::get('patients/{id}/page4/', 'PageController@page4');

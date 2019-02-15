@@ -1,82 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use App\Http\Controllers;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StorePatientsRequest;
 use App\Http\Requests\Admin\UpdatePatientsRequest;
 use Yajra\DataTables\DataTables;
-use Illuminate\Support\Facades\Auth;
-use App\User;
 
-class PatientController extends Controller
+class PageController extends Controller
 {
-
-  
     /**
      * Display a listing of Patient.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        if (! Gate::allows('patient_access')) {
-            return abort(401);
-        }
-
-        $patients= Patient::where('user_id', Auth::id() )->get();
-        $total=$patients->count();
-        return view('patients.index', compact('patients', 'total'));
-    }
-
-    /**
-     * Show the form for creating new Patient.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (! Gate::allows('patient_create')) {
-            return abort(401);
-        }
-        
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-
-        return view('patients.create', compact('users', 'townships'));
-    }
-
-    /**
-     * Store a newly created Patient in storage.
-     *
-     * @param  \App\Http\Requests\StorePatientsRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StorePatientsRequest $request)
-    {
-        if (! Gate::allows('patient_create')) {
-            return abort(401);
-        }
-        $patient = Patient::create($request->all());
-        $id=$patient->id;
-     
-        if ($patient->hiv_status==1){ 
-        return redirect('patients/' .$id. '/page2');}
-
-        else {   return redirect('patients/' .$id. '/page3');}
-    }
-
-
-    /**
-     * Show the form for editing Patient.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+  
+  
+    public function page2 ($id)
     {
         if (! Gate::allows('patient_edit')) {
             return abort(401);
@@ -87,7 +30,7 @@ class PatientController extends Controller
 
         $patient = Patient::findOrFail($id);
 
-        return view('patients.page.page1', compact('patient', 'users', 'townships'));
+        return view('admin.patients.edit', compact('patient', 'users', 'townships'));
     }
 
     /**
@@ -107,7 +50,7 @@ class PatientController extends Controller
 
 
 
-        return back();
+        return redirect()->route('admin.patients.index');
     }
 
 
@@ -124,7 +67,7 @@ class PatientController extends Controller
         }
         $patient = Patient::findOrFail($id);
 
-        return view('patients.show', compact('patient'));
+        return view('admin.patients.show', compact('patient'));
     }
 
 
@@ -142,7 +85,7 @@ class PatientController extends Controller
         $patient = Patient::findOrFail($id);
         $patient->delete();
 
-        return redirect()->route('patients.index');
+        return redirect()->route('admin.patients.index');
     }
 
     /**
