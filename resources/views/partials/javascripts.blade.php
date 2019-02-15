@@ -39,7 +39,7 @@
      
 
 </script>
-
+ 
 <script>
     $(function(){
         /** add active class and stay opened when selected */
@@ -60,6 +60,26 @@
         }).parentsUntil('.sidebar-menu > .treeview-menu').addClass('menu-open').css('display', 'block');
     });
 </script>
+<script>
+            var unsaved = false;
+            $(':submit').click(function() {
+            unsaved = false;
+            });
+
+            $(":input").change(function(){ //triggers change in all input fields including text type
+                unsaved = true;
+            });
+         
+
+            function unloadPage(){ 
+                if(unsaved){
+                    return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                }
+            }
+
+        window.onbeforeunload = unloadPage;
+    
+    </script>
 
  
 

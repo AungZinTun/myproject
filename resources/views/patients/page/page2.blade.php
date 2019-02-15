@@ -17,8 +17,8 @@
       {!! Form::hidden('edd', old('edd'), ['class' => 'form-control date', 'placeholder' => '', 'required' => '']) !!}
       {!! Form::hidden('address', old('address'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
    
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel">
+        <div class="panel-heading bg-success">
             <div class="row"> 
             <div class="col-xs-4"><h3 class="page-title"> Name : {{$patient->name }} </h3>  
             
@@ -379,11 +379,6 @@
      
     </div>
 
-   
-
-
-
-
 @stop
 
 @section('javascript')
@@ -424,8 +419,6 @@
             }}
 </script>
 
-
-  
     <script src="{{ url('adminlte/plugins/datetimepicker/moment-with-locales.min.js') }}"></script>
     <script src="{{ url('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
     <script>
@@ -440,6 +433,22 @@
             });
             
         });
+    </script>
+    <script>
+            var unsaved = false;
+
+            $(":input").change(function(){ //triggers change in all input fields including text type
+                unsaved = true;
+            });
+
+            function unloadPage(){ 
+                if(unsaved){
+                    return "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?";
+                }
+            }
+
+        window.onbeforeunload = unloadPage;
+    
     </script>
             
 @stop

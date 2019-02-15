@@ -17,8 +17,8 @@
       {!! Form::hidden('address', old('address'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
    
    
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="panel">
+        <div class="panel-heading bg-success">
             <div class="row"> 
             <div class="col-xs-4"><h3 class="page-title"> Name : {{$patient->name }} </h3>  
             

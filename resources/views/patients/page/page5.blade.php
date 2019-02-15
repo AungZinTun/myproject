@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h5 class="page-title text-primary">Page 1</h5>
+   
     
     {!! Form::model($patient, ['method' => 'PUT', 'route' => ['patients.update', $patient->id]]) !!}
     {!! Form::hidden('user_id', old('user_id'), ['class' => 'form-control', 'required' => '' ]) !!}
@@ -16,8 +16,10 @@
       {!! Form::hidden('address', old('address'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
    
    
-    <div class="panel panel-default">
-        <div class="panel-heading">
+     
+   
+      <div class="panel">
+        <div class="panel-heading bg-success">
             <div class="row"> 
             <div class="col-xs-4"><h3 class="page-title"> Name : {{$patient->name }} </h3>  
             
