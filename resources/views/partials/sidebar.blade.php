@@ -45,7 +45,7 @@
 
 
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
-                <a href="{{ url('/') }}">
+                <a href="{{ url('/dashboard') }}">
                     <i class="fa fa-wrench  text-primary"></i>
                     <span class="title">@lang('quickadmin.qa_dashboard')</span>
                 </a>

@@ -1,5 +1,6 @@
 <?php
 Route::get('/', function () { return redirect('/admin/home'); });
+Route::get('/dashboard', 'HomeController@dashboard');
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');

@@ -35,6 +35,18 @@ class HomeController extends Controller
             return redirect('/patients');}
 
     }
+    public function dashboard()
+    {
+        if(auth()->user()->role_id == 1) {
+
+            return view('admin.dashboard');}
+           
+        else {
+        
+            return view('patients.dashboard');}
+
+    }
+
 
 
 }
