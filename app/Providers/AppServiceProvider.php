@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) 
     {
       if (Auth::check()){
-        $due = Patient::where('user_id', Auth::user()->id)->get();
+        $due = Patient::where('user_id', Auth::user()->id)->where("dod", "<=", now())->whereNull("dna_pcr_result")->get();
       }
       else { $due =Patient::all(); }
         $notification=$due->count();

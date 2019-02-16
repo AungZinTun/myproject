@@ -1,11 +1,12 @@
 <?php
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Patient;
-
+use Illuminate\Support\Facades\Auth;
+use App\User;
 class SystemCalendarController extends Controller
 {
     public function index() 
@@ -31,7 +32,7 @@ class SystemCalendarController extends Controller
         //    ]; 
         // } 
 
-        foreach (\App\Patient::all() as $patient) { 
+        foreach (\App\Patient::where('user_id', Auth::id() ) as $patient) { 
            $crudFieldValue = $patient->getOriginal('edd'); 
 
            if (! $crudFieldValue) {
@@ -87,7 +88,7 @@ class SystemCalendarController extends Controller
             $events[]       = [ 
                  'title' => $dataFieldValue, 
                  'start' => $crudFieldValue, 
-                 'url'   => route('patients.edit', $patient->id),
+                 'url'   => '/patients/'.$patient->id.'/page5',
                  'color' => $color,
             ]; 
          } 

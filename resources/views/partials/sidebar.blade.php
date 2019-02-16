@@ -52,11 +52,7 @@
             </li>
 
             <li>
-                <a href="{{url('admin/calendar')}}">
-                  <i class="fa fa-calendar  text-primary"></i>
-                  <span class="title">
-
-<style > .badge {
+            <style > .badge {
         padding: 1px 9px 2px;
         font-size: 12.025px;
         font-weight: bold;
@@ -103,6 +99,13 @@
         background-color: #1a1a1a;
 }</style>
 
+            @if( Auth()->User()->role_id== 1)
+                <a href="{{url('admin/calendar')}}">
+            @else 
+            <a href="{{url('/calendar')}}">
+            @endif
+                  <i class="fa fa-calendar  text-primary"></i>
+                  <span class="title">
                   
                     Calendar  <span class="badge badge-error">{{$notification}}</span>
                   </span>

@@ -96,18 +96,18 @@
                         <div class="col-xs-8">
                         <div>
                                 <label>
-                                    {!! Form::radio('pep', '1', false, []) !!}
+                                    {!! Form::radio('pep', '1', false, ["id"=>"pepYes", "onclick"=>"pepCheck();"]) !!}
                                     Yes
                                 </label>
                      
                                 <label>
-                                    {!! Form::radio('pep', '0', false, []) !!}
+                                    {!! Form::radio('pep', '0', false, ["id"=>"pepNo", "onclick"=>"pepCheck();"]) !!}
                                     No
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="pepOption">
                         <div class="col-xs-4 form-group">
                             {!! Form::label('pep_option', trans('quickadmin.patients.fields.pep-option').'', ['class' => 'control-label']) !!}
                             <p class="help-block"></p>
@@ -130,10 +130,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="pepNoReason">
                         <div class="col-xs-4 form-group">
                             {!! Form::label('pep_not_reason', trans('quickadmin.patients.fields.pep-not-reason').'', ['class' => 'control-label']) !!}
-                         
                         </div>
                         <div class="col-xs-8">
                         {!! Form::text('pep_not_reason', old('pep_not_reason'), ['class' => 'form-control', 'placeholder' => '']) !!}
@@ -159,17 +158,17 @@
                             @endif
                             <div>
                                 <label>
-                                    {!! Form::radio('cpt', '1', false, []) !!}
+                                    {!! Form::radio('cpt', '1', false, ["id"=>"cptYes", "onclick"=>"cptCheck();"]) !!}
                                     Yes
                                 </label>
                                 <label>
-                                    {!! Form::radio('cpt', '0', false, []) !!}
+                                    {!! Form::radio('cpt', '0', false,["id"=>"cptNo", "onclick"=>"cptCheck();"]) !!}
                                     No
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="cptNoReason">
                         <div class="col-xs-4 form-group">
                             {!! Form::label('cpt_not_reason', trans('quickadmin.patients.fields.cpt-not-reason').'', ['class' => 'control-label']) !!}
                        
@@ -182,7 +181,6 @@
                                     {{ $errors->first('cpt_not_reason') }}
                                 </p>
                             @endif
-                        
                         </div>
                     </div>
                     <div class="row">
@@ -199,60 +197,67 @@
                             @endif
                             <div>
                                 <label>
-                                    {!! Form::radio('dna_pcr', '1', false, []) !!}
+                                    {!! Form::radio('dna_pcr', '1', false, ["id"=>"dnaTested", "onclick"=>"dnaCheck();"]) !!}
                                     Tested
                                 </label>
                     
                                 <label>
-                                    {!! Form::radio('dna_pcr', '0', false, []) !!}
+                                    {!! Form::radio('dna_pcr', '0', false, ["id"=>"dnaNotTested", "onclick"=>"dnaCheck();"]) !!}
                                     Not Tested
                                 </label>
                             </div>
                             
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-4 form-group">
-                            {!! Form::label('dna_pcr_date', trans('quickadmin.patients.fields.dna-pcr-date').'', ['class' => 'control-label']) !!}
-                
-                        </div>
-                        <div class="col-xs-8">
-                        {!! Form::text('dna_pcr_date', old('dna_pcr_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('dna_pcr_date'))
-                                <p class="help-block">
-                                    {{ $errors->first('dna_pcr_date') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 form-group">
-                            {!! Form::label('dna_pcr_result', trans('quickadmin.patients.fields.dna-pcr-result').'', ['class' => 'control-label']) !!}
-                        
-                        </div>
-                        <div class="col-xs-8">
-                        <p class="help-block"></p>
-                            @if($errors->has('dna_pcr_result'))
-                                <p class="help-block">
-                                    {{ $errors->first('dna_pcr_result') }}
-                                </p>
-                            @endif
-                            <div>
-                                <label>
-                                    {!! Form::radio('dna_pcr_result', '1', false, []) !!}
-                                    Detected 
-                                </label>
-                          
-                                <label>
-                                    {!! Form::radio('dna_pcr_result', '0', false, []) !!}
-                                    Not detected 
-                                </label>
-                            </div>
+                    <!-- dna test  -->
+                    <div class="row" id="dnaTestResult">
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-4 form-group">
+                                        {!! Form::label('dna_pcr_date', trans('quickadmin.patients.fields.dna-pcr-date').'', ['class' => 'control-label']) !!}
                             
-                        </div>
+                                    </div>
+                                    <div class="col-xs-8">
+                                    {!! Form::text('dna_pcr_date', old('dna_pcr_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
+                                        <p class="help-block"></p>
+                                        @if($errors->has('dna_pcr_date'))
+                                            <p class="help-block">
+                                                {{ $errors->first('dna_pcr_date') }}
+                                            </p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4 form-group">
+                                        {!! Form::label('dna_pcr_result', trans('quickadmin.patients.fields.dna-pcr-result').'', ['class' => 'control-label']) !!}
+                                    
+                                    </div>
+                                    <div class="col-xs-8">
+                                    <p class="help-block"></p>
+                                        @if($errors->has('dna_pcr_result'))
+                                            <p class="help-block">
+                                                {{ $errors->first('dna_pcr_result') }}
+                                            </p>
+                                        @endif
+                                        <div>
+                                            <label>
+                                                {!! Form::radio('dna_pcr_result', '1', false, ["id"=>"dnaDetected", "onclick"=>"dnaResultCheck();"]) !!}
+                                                Detected 
+                                            </label>
+                                    
+                                            <label>
+                                                {!! Form::radio('dna_pcr_result', '0', false, []) !!}
+                                                Not detected 
+                                            </label>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
                     </div>
-                    <div class="row">
+                     <!-- dna test  -->
+                    <div class="row" id="arvStatus">
                         <div class="col-xs-4 form-group">
                             {!! Form::label('baby_arv', trans('quickadmin.patients.fields.baby-arv').'', ['class' => 'control-label']) !!}
                         
@@ -266,18 +271,18 @@
                             @endif
                             <div>
                                 <label>
-                                    {!! Form::radio('baby_arv', '1', false, []) !!}
+                                    {!! Form::radio('baby_arv', '1', false, ["id"=>"arvYes", "onclick"=>"arvCheck"]) !!}
                                     Yes
                                 </label>
                                 <label>
-                                    {!! Form::radio('baby_arv', '0', false, []) !!}
+                                    {!! Form::radio('baby_arv', '0', false, ["id"=>"arvNo", "onclick"=>"arvCheck"]) !!}
                                     No
                                 </label>
                             </div>
                             
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="arvNoReason">
                         <div class="col-xs-4 form-group">
                             {!! Form::label('baby_arv_no_reason', trans('quickadmin.patients.fields.baby-arv-no-reason').'', ['class' => 'control-label']) !!}
                         
@@ -293,7 +298,9 @@
                         
                         </div>
                     </div>
-                    <div class="row">
+                   <div class="row" id="arvDetail">
+                        <div class="col-xs-12">
+                        <div class="row">
                         <div class="col-xs-4 form-group">
                             {!! Form::label('baby_txt_start_date', trans('quickadmin.patients.fields.baby-txt-start-date').'', ['class' => 'control-label']) !!}
                         
@@ -352,6 +359,9 @@
                             @endif
                         </div>
                     </div>
+                        </div>
+                   
+                   </div>
                     <div class="row">
                         <div class="col-xs-4 form-group">
                             {!! Form::label('feeding_option', trans('quickadmin.patients.fields.feeding-option').'', ['class' => 'control-label']) !!}
@@ -648,6 +658,11 @@
 
           window.onload=function(){
             outcomeCheck();
+            pepCheck();
+            cptCheck();
+            dnaCheck();
+            dnaResultCheck();
+            arvCheck();
             };
 
         function outcomeCheck() {
@@ -665,6 +680,64 @@
                  document.getElementById('alive').style.display="none";
                  document.getElementById('dead_date').style.display="none";
                  document.getElementById("nextPage").className="btn disabled";
+            }
+        }
+        function pepCheck(){
+            if (document.getElementById('pepYes').checked) {
+                document.getElementById('pepOption').style.display="block";
+                document.getElementById('pepNoReason').style.display="none";          
+            }
+            else if (document.getElementById('pepNo').checked) {
+                document.getElementById('pepOption').style.display="none";
+                document.getElementById('pepNoReason').style.display="block";          
+            }
+            else {
+                document.getElementById('pepOption').style.display="none";
+                document.getElementById('pepNoReason').style.display="none";  
+            }
+        }
+        function cptCheck(){
+          
+           if (document.getElementById('cptNo').checked) {
+                document.getElementById('cptNoReason').style.display="block";          
+            }
+            else {
+                document.getElementById('cptNoReason').style.display="none";  
+            }
+        }
+        function dnaCheck() {
+            if (document.getElementById('dnaTested').checked) {
+                document.getElementById('dnaTestResult').style.display="block";
+               
+            }
+        
+            else {
+                document.getElementById('dnaTestResult').style.display="none";
+              
+            }
+        }
+        function dnaResultCheck() {
+            if (document.getElementById('dnaDetected').checked) {
+                document.getElementById('arvStatus').style.display="block";
+            }
+        
+            else {
+                document.getElementById('arvStatus').style.display="none";
+              
+            }
+        }
+        function arvCheck(){
+            if (document.getElementById('arvYes').checked) {
+                document.getElementById('arvDetail').style.display="block";
+                document.getElementById('arvNoReason').style.display="none";          
+            }
+            else if (document.getElementById('arvNo').checked) {
+                document.getElementById('arvDetail').style.display="none";
+                document.getElementById('arvNoReason').style.display="block";          
+            }
+            else {
+                document.getElementById('arvDetail').style.display="none";
+                document.getElementById('arvNoReason').style.display="none";  
             }
         }
     </script>
