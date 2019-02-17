@@ -76,6 +76,24 @@
                             </div>
                         </div>
                     </form>
+                    <table>
+                        <thead>
+                            <th>
+                            email
+                            </th>
+                            <th>
+                            password
+                            </th>
+                        </thead>
+                        <tbody>
+                            <td>
+                            admin@admin.com
+                            </td>
+                            <td>
+                            password
+                            </td>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
