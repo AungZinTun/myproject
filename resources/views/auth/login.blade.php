@@ -76,13 +76,18 @@
                             </div>
                         </div>
                     </form>
-                    <table>
+               <div class="card card-success">
+               <div class="card-header bg-primary">   Test Users </div>
+                    <table class="table">
                         <thead>
                             <th>
                             email
                             </th>
                             <th>
                             password
+                            </th>
+                            <th>
+                            User Type
                             </th>
                         </thead>
                         <tbody>
@@ -92,8 +97,12 @@
                             <td>
                             password
                             </td>
+                            <td>
+                            admin
+                            </td>
                         </tbody>
                     </table>
+               </div>
                 </div>
             </div>
         </div>
