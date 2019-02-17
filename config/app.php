@@ -140,6 +140,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Laravel\Dusk\DuskServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -163,6 +164,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Laravel\Dusk\DuskServiceProvider::class,
+        
         
 
         Collective\Html\HtmlServiceProvider::class,
