@@ -16,20 +16,21 @@
       {!! Form::hidden('address', old('address'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
    
    
-    <div class="panel panel-defaul">
+    <div class="panel panel-defaul text-sm">
         <div class="panel-heading bg-success">
-            <div class="row"> 
-            <div class="col-xs-4"><h3 class="page-title"> Name : {{$patient->name }} </h3>  
-            
-          {!! Form::label('mpi_code', trans('quickadmin.patients.fields.mpi-code').'', ['class' => 'control-label']) !!} :    ( {{   $patient->mpi_code }} )</div>
+            <div class="row text-muted"> 
+                <div class="col-xs-6"> {!! Form::label('name', trans('quickadmin.patients.fields.name').'', ['class' => 'control-label']) !!} {{$patient->name }} 
+                <p></p>
+
+                {!! Form::label('mpi_code', trans('quickadmin.patients.fields.mpi-code').'', ['class' => 'control-label']) !!} :    ( {{   $patient->mpi_code }} )</div>
     
 
-            <div class="col-xs-3 pull-right">
-            {!! Form::label('user_id', trans('quickadmin.patients.fields.user').'*', ['class' => 'control-label']) !!} :{{   $patient->user->name}}
-            <p>Phone:{{   $patient->user->phone }} </p>
-            <p>Report Unit:  ( {{   $patient->township->title}} )</p>
-          
-            </div>
+                <div class="col-xs-6 pull-right">
+                {!! Form::label('user_id', trans('quickadmin.patients.fields.user').'*', ['class' => 'control-label']) !!} :{{   $patient->user->name}}
+                <p>Phone:{{   $patient->user->phone }} </p>
+                <p>Report Unit:  ( {{   $patient->township->title}} )</p>
+            
+                </div>
            
             </div>
 
@@ -232,7 +233,7 @@
                   @endif
                     </div>
                     <div class="col-xs-2">
-                    <a href="/patients"  class=" text-muted">   <i class="fa fa-list text-muted"></i> Back </a>
+                    <a href="/patients"  class="btn btn-sm btn-default text-muted"> <i class="fa fa-list"></i> Back </a>
                     </div>
                 
                 </div>

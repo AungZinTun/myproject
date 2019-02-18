@@ -24,9 +24,6 @@
                 </h3>
             @endif
 
-            <div class="row">
-                <div class="col-md-12">
-
                     @if (Session::has('message'))
                         <div class="alert alert-info">
                             <p>{{ Session::get('message') }}</p>
@@ -44,8 +41,6 @@
 
                     @yield('content')
 
-                </div>
-            </div>
         </section>
     </div>
 </div>
