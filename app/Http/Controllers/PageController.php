@@ -55,7 +55,7 @@ class PageController extends Controller
 
         $patient = Patient::findOrFail($id);
 
-        return view('patients.page.page3', compact('patient', 'users', 'townships'));
+        return view('patients.page.page3', compact('patient'));
     }
 
     public function page4 ($id)
@@ -66,7 +66,7 @@ class PageController extends Controller
 
         $patient = Patient::findOrFail($id);
 
-        return view('patients.page.page4', compact('patient', 'users', 'townships'));
+        return view('patients.page.page4', compact('patient'));
     }
 
     public function page5 ($id)
@@ -86,52 +86,40 @@ class PageController extends Controller
         if (! Gate::allows('patient_edit')) {
             return abort(401);
         }
-        
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $patient = Patient::findOrFail($id);
 
-        return view('admin.patients.edit', compact('patient', 'users', 'townships'));
+        return view('patients.page.page6', compact('patient'));
     }
     public function page7 ($id)
     {
         if (! Gate::allows('patient_edit')) {
             return abort(401);
         }
-        
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $patient = Patient::findOrFail($id);
 
-        return view('admin.patients.edit', compact('patient', 'users', 'townships'));
+        return view('patients.page.page7', compact('patient'));
     }
     public function page8 ($id)
     {
         if (! Gate::allows('patient_edit')) {
             return abort(401);
         }
-        
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $patient = Patient::findOrFail($id);
 
-        return view('admin.patients.edit', compact('patient', 'users', 'townships'));
+        return view('patients.page.page8', compact('patient'));
     }
     public function page9 ($id)
     {
         if (! Gate::allows('patient_edit')) {
             return abort(401);
         }
-        
-        $users = \App\User::get()->pluck('name', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
-        $townships = \App\Township::get()->pluck('title', 'id')->prepend(trans('quickadmin.qa_please_select'), '');
 
         $patient = Patient::findOrFail($id);
 
-        return view('admin.patients.edit', compact('patient', 'users', 'townships'));
+        return view('patients.page.page9', compact('patient'));
     }
     /**
      * Update Patient in storage.
