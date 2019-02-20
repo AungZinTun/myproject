@@ -12,8 +12,8 @@
             <div class="row  form-group text-muted">
                 <div class="col-xs-4 form-group">
                  {!! Form::label('mpi_code', trans('quickadmin.patients.fields.mpi-code').'', ['class' => 'control-label']) !!} :
-                 {{ $mpi=strtoupper(uniqid())}}
-                {!! Form::hidden('mpi_code',json_decode($mpi),  old('mpi_code'), ['class' => 'form-control', 'placeholder'=>"$mpi"]) !!}                 
+
+                {!! Form::text('mpi_code', $mpi=strtoupper(uniqid()) , ['id'=>'mpi_code','class' => 'form-control']) !!}                 
                 
                     
                 </div>
