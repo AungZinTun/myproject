@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.patient')
 
 @section('content')
   
@@ -457,18 +457,18 @@
     </div>
             <div class="panel-footer">
                 <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-3">
                     {!! Form::submit(trans('Save'), ['class' => 'btn btn-success']) !!}
                     {!! Form::close() !!}
                     </div>
-                    <div class="col-xs-6 justify-content-center">
+                    <div class="col-xs-6 text-center">
                     @if ($patient->hiv_status==0 )   <a class="btn btn-link" href="/patients/{{$patient->id}}/page3"> <i class="fa fa-backward"></i> </a>
                   @else   <a class="btn btn-link" href="/patients/{{$patient->id}}/page2"> <i class="fa fa-backward"></i> </a>
                   @endif
                     <a  class="btn disabled" href="/patients/{{$patient->id}}/page4"> page 4</a>
                     <a class="btn btn-link" href="/patients/{{$patient->id}}/page5"> <i class="fa fa-forward"></i> </a>
                     </div>
-                    <div class="col-xs-2">
+                    <div class="col-xs-3 text-right">
                     <a href="/patients"  class=" btn btn-sm btn-default text-muted">   <i class="fa fa-list text-muted"></i> Back </a>
                     </div>
                 
