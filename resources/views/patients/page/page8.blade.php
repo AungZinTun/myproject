@@ -1690,8 +1690,6 @@
                 format: "{{ config('app.date_format_moment') }}",
                 locale: "{{ App::getLocale() }}",
             });
-            
         });
     </script>
-            
 @stop

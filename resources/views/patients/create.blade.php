@@ -17,7 +17,7 @@
               <tr class="bg-light">
                     <th>
                         {!! Form::label('mpi_code', trans('quickadmin.patients.fields.mpi-code').'', ['class' => 'control-label']) !!}
-                        {!! Form::text('mpi_code', old('mpi_code'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                        {!! Form::text('mpi_code', strtoupper(uniqid()), old('mpi_code'), ['class' => 'form-control', 'placeholder' => '']) !!}
                         @if($errors->has('mpi_code'))
                             <p class="help-block">
                                 {{ $errors->first('mpi_code') }}

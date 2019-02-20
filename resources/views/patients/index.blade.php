@@ -1,24 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content-header">
-        <span class="pull-left">PMCT Positive  ({{ Auth()->user()->township->title }})   Total : {{$total}} </span>
-        <h1 class="pull-right">
-           <a class="btn btn-link pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('patients.create') !!}">  <i class="fa fa-user-plus  text-primary"></i> Register New</a>
-        </h1>
-    </section>
-    <div class="content">
+  
+  <div class="row">
+    <div class="col-xs-8">
+    <span class="display3">PMCT Positive  ({{ Auth()->user()->township->title }})   Total : <span class="text-danger">{{$total}}</span> </span>
+    </div>
+    <div class="col-xs-4">
+           <a class="btn btn-link pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('patients.create') !!}"> 
+            <i class="fa fa-user-plus btn-lg"></i></a>
+    </div>
+  </div>
+     
+       
+   
         <div class="clearfix"></div>
-
         @include('flash::message')
-
-        
-     
+            <div class="panel">
+                <div class="panel-body table-responsive">
                     @include('patients.table')
-     
+                </div>
+            </div>
+        
+            
     
         
-        </div>
-    </div>
+     
 @endsection
 
