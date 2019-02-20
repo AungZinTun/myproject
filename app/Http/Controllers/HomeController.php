@@ -28,21 +28,24 @@ class HomeController extends Controller
     {
         if(auth()->user()->role_id == 1) {
 
-            return view('home');}
+            return redirect('/dashboard');}
            
         else {
         
             return redirect('/patients');}
-
     }
+
     public function dashboard()
     {
         if(auth()->user()->role_id == 1) {
 
+            $patients=Patient::where('user_id', Auth::id() )->get();
+
             return view('admin.dashboard');}
            
         else {
-        
+
+             $patients=Patient::where('user_id', Auth::id() )->get();
             return view('patients.dashboard');}
 
     }
