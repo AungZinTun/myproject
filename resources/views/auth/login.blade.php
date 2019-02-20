@@ -33,12 +33,20 @@
                             <label class="col-md-4 control-label">@lang('quickadmin.qa_email')</label>
 
                             <div class="col-md-6">
-                                <input type="email"
+                                <!-- <input type="email"
                                        class="form-control"
                                        name="email"
-                                       value="{{ old('email') }}">
+                                       value="{{ old('email') }}"> -->
+                                 <select class="form-control" id="email" name="email">
+                                     <option value="hopong.tsp@gmail.com">hopone.tsp@gmail.com</option>
+                                    <option value="admin@admin.com">admin@admin.com</option>
+                                   
+                                 </select>
+                                 
+
                             </div>
                         </div>
+                        
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">@lang('quickadmin.qa_password')</label>
@@ -46,7 +54,7 @@
                             <div class="col-md-6">
                                 <input type="password"
                                        class="form-control"
-                                       name="password">
+                                       name="password" value="password">
                             </div>
                         </div>
 
@@ -77,7 +85,7 @@
                         </div>
                     </form>
                <div class="card card-success">
-               <div class="card-header bg-primary">   Test Users </div>
+               <!-- <div class="card-header bg-primary">   Test Users </div>
                     <table class="table">
                         <thead>
                             <th>
@@ -102,7 +110,7 @@
                             </td>
                         </tbody>
                     </table>
-               </div>
+               </div> -->
                 </div>
             </div>
         </div>
