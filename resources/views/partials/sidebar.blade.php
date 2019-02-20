@@ -1,11 +1,11 @@
 @inject('request', 'Illuminate\Http\Request')
 <!-- Left side column. contains the sidebar -->
-<aside class="main-sidebar text-primary mb-0" style="font-size: 12px; 
+<aside class="main-sidebar text-primary mb-0" style=" 
        color: black;
        background-color:  #dae5ee;
        ">
     <!-- sidebar: style can be found in sidebar.less -->
-    <div class="sidebar">
+    <div class="sidebar text-md">
         <ul class="sidebar-menu bg-light">
 
         <li class="treeview text-success">

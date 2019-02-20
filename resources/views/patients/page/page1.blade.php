@@ -21,8 +21,7 @@
             <div class="row text-muted"> 
                 <div class="col-xs-6"> {!! Form::label('name', trans('quickadmin.patients.fields.name').'', ['class' => 'control-label']) !!} {{$patient->name }} 
                 <p></p>
-
-                {!! Form::label('mpi_code', trans('quickadmin.patients.fields.mpi-code').'', ['class' => 'control-label']) !!} :    ( {{   $patient->mpi_code }} )</div>
+                {!! Form::label('mpi_code', trans('quickadmin.patients.fields.mpi-code').'', ['class' => 'control-label']) !!} :    {{   $patient->mpi_code }}</div>
     
 
                 <div class="col-xs-6 pull-right">
