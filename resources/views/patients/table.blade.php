@@ -15,6 +15,7 @@
             <th>EID 1</th>
             <th>EID 2</th>
             <th>EID 3</th>
+            <th>EID 3</th>
             <!-- <th colspan="3">Action</th> -->
         </tr>
     </thead>
@@ -39,14 +40,20 @@
             </a>
             </td>
             <td class='text-xs'>   <a href="/patients/{{$patient->id}}/page6">
-            @if ($patient->dna_pcr_result_1=="1") <span class="label btn-danger text-danger label-many"> D </span> 
-                  @elseif ($patient->dna_pcr_result_2=="0") <span class="label btn-success text-danger label-many">ND</span>
+            @if ($patient->dna_pcr_result1=="1") <span class="label btn-danger text-danger label-many"> D </span> 
+                  @elseif ($patient->dna_pcr_result1=="0") <span class="label btn-success text-danger label-many">ND</span>
                   @else - @endif
             </a>
             </td>
             <td class='text-xs'>  <a href="/patients/{{$patient->id}}/page7">
-            @if ($patient->dna_pcr_result_1=="1") <span class="label btn-danger text-danger label-many"> D </span> 
-                  @elseif ($patient->dna_pcr_result_2=="0") <span class="label btn-success text-danger label-many">ND</span>
+            @if ($patient->dna_pcr_result2=="1") <span class="label btn-danger text-danger label-many"> D </span> 
+                  @elseif ($patient->dna_pcr_result2=="0") <span class="label btn-success text-danger label-many">ND</span>
+                  @else - @endif
+            </a> 
+            </td>
+            <td class='text-xs'>  <a href="/patients/{{$patient->id}}/page7">
+            @if ($patient->dna_pcr_result3=="1") <span class="label btn-danger text-danger label-many"> D </span> 
+                  @elseif ($patient->dna_pcr_result3=="0") <span class="label btn-success text-danger label-many">ND</span>
                   @else - @endif
             </a> 
             </td>
@@ -62,4 +69,5 @@
         </tr>
     @endforeach
     </tbody>
+
 </table>

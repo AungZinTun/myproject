@@ -15,9 +15,7 @@
       {!! Form::hidden('edd', old('edd'), ['class' => 'form-control date', 'placeholder' => '', 'required' => '']) !!}
       {!! Form::hidden('address', old('address'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
    
-   
-     
-      <div class="panel panel-defaul text-sm">
+      <div class="panel text-sm">
         <div class="panel-heading bg-success">
             <div class="row text-muted"> 
                 <div class="col-xs-6"> {!! Form::label('name', trans('quickadmin.patients.fields.name').'', ['class' => 'control-label']) !!} {{$patient->name }} 
@@ -29,7 +27,7 @@
                 <div class="col-xs-6 pull-right">
                 {!! Form::label('user_id', trans('quickadmin.patients.fields.user').'*', ['class' => 'control-label']) !!} :{{   $patient->user->name}}
                 <p>Phone:{{   $patient->user->phone }} </p>
-                <p>Report Unit:  ( {{   $patient->township->title}} )</p>
+          
             
                 </div>
            
@@ -39,9 +37,9 @@
        
         </div>
 
-        <div class="panel-body bg-success">
+        <div class="panel-body table-responsive bg-success">
            
-            <div class="row bg-danger">
+            <div class="row ">
                 <div class="col-xs-4 form-group">
                     {!! Form::label('baby_outcome', trans('quickadmin.patients.fields.baby-outcome').'', ['class' => 'control-label']) !!}
                     <p class="help-block"></p>
@@ -147,15 +145,15 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-4 form-group">
-                                {!! Form::label('cpt', trans('quickadmin.patients.fields.cpt').'', ['class' => 'control-label']) !!}
-                            </div>
-                            <div class="col-xs-8">
-                            <p class="help-block"></p>
+                                {!! Form::label('cpt', trans('quickadmin.patients.fields.cpt').'', ['class' => 'control-label']) !!}   <p class="help-block"></p>
                                 @if($errors->has('cpt'))
                                     <p class="help-block">
                                         {{ $errors->first('cpt') }}
                                     </p>
                                 @endif
+                            </div>
+                            <div class="col-xs-8">
+                         
                                 <div>
                                     <label>
                                         {!! Form::radio('cpt', '1', false, ["id"=>"cptYes", "onclick"=>"cptCheck();"]) !!}
@@ -171,10 +169,6 @@
                         <div class="row" id="cptNoReason">
                             <div class="col-xs-4 form-group">
                                 {!! Form::label('cpt_not_reason', trans('quickadmin.patients.fields.cpt-not-reason').'', ['class' => 'control-label']) !!}
-                        
-                            </div>
-                            <div class="col-xs-8">
-                            {!! Form::text('cpt_not_reason', old('cpt_not_reason'), ['class' => 'form-control', 'placeholder' => '']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('cpt_not_reason'))
                                     <p class="help-block">
@@ -182,19 +176,23 @@
                                     </p>
                                 @endif
                             </div>
+                            <div class="col-xs-8">
+                            {!! Form::text('cpt_not_reason', old('cpt_not_reason'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                        
+                            </div>
                         </div>
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-xs-4 form-group">
                                 {!! Form::label('dna_pcr', trans('quickadmin.patients.fields.dna-pcr').'', ['class' => 'control-label']) !!}
-                            
-                            </div>
-                            <div class="col-xs-8">
-                            <p class="help-block"></p>
+                                <p class="help-block"></p>
                                 @if($errors->has('dna_pcr'))
                                     <p class="help-block">
                                         {{ $errors->first('dna_pcr') }}
                                     </p>
                                 @endif
+                            </div>
+                            <div class="col-xs-8">
+                       
                                 <div>
                                     <label>
                                         {!! Form::radio('dna_pcr', '1', false, ["id"=>"dnaTested", "onclick"=>"dnaCheck();"]) !!}
@@ -215,10 +213,6 @@
                                     <div class="row">
                                         <div class="col-xs-4 form-group">
                                             {!! Form::label('dna_pcr_date', trans('quickadmin.patients.fields.dna-pcr-date').'', ['class' => 'control-label']) !!}
-                                
-                                        </div>
-                                        <div class="col-xs-8">
-                                        {!! Form::text('dna_pcr_date', old('dna_pcr_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
                                             <p class="help-block"></p>
                                             @if($errors->has('dna_pcr_date'))
                                                 <p class="help-block">
@@ -226,19 +220,23 @@
                                                 </p>
                                             @endif
                                         </div>
+                                        <div class="col-xs-8">
+                                        {!! Form::text('dna_pcr_date', old('dna_pcr_date'), ['class' => 'form-control date', 'placeholder' => '']) !!}
+                                   
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-4 form-group">
                                             {!! Form::label('dna_pcr_result', trans('quickadmin.patients.fields.dna-pcr-result').'', ['class' => 'control-label']) !!}
-                                        
-                                        </div>
-                                        <div class="col-xs-8">
-                                        <p class="help-block"></p>
+                                            <p class="help-block"></p>
                                             @if($errors->has('dna_pcr_result'))
                                                 <p class="help-block">
                                                     {{ $errors->first('dna_pcr_result') }}
                                                 </p>
                                             @endif
+                                        </div>
+                                        <div class="col-xs-8">
+                                   
                                             <div>
                                                 <label>
                                                     {!! Form::radio('dna_pcr_result', '1', false, ["id"=>"dnaDetected", "onclick"=>"dnaResultCheck();"]) !!}
@@ -260,15 +258,15 @@
                         <div class="row" id="arvStatus">
                             <div class="col-xs-4 form-group">
                                 {!! Form::label('baby_arv', trans('quickadmin.patients.fields.baby-arv').'', ['class' => 'control-label']) !!}
-                            
-                            </div>
-                            <div class="col-xs-8">
-                            <p class="help-block"></p>
+                                <p class="help-block"></p>
                                 @if($errors->has('baby_arv'))
                                     <p class="help-block">
                                         {{ $errors->first('baby_arv') }}
                                     </p>
                                 @endif
+                            </div>
+                            <div class="col-xs-8">
+                      
                                 <div>
                                     <label>
                                         {!! Form::radio('baby_arv', '1', false, ["id"=>"arvYes", "onclick"=>"arvCheck"]) !!}
@@ -399,24 +397,24 @@
                                 @endif
                                 
                             </div>
-                            <div class="col-xs-8">
+                            <div class="col-xs-8 text-sm">
                         <label for=""> Immunization</label>
-                                <table class='table table-xs text-xs table-bordered bg-warning'>
+                                <table class='table table-sm table-bordered'>
                                         <thead>
                                         <tr>
                                             <th>
                                                 </th>
                                                 <th>
-                                                0 Month
+                                                0 M
                                                 </th>
                                                 <th>
-                                                2 Month
+                                                2 M
                                                 </th>
                                                 <th>
-                                                4 Month
+                                                4 M
                                                 </th>
                                                 <th>
-                                                6 Month
+                                                6 M
                                                 </th>
                                         </tr>
                                         </thead>
@@ -449,7 +447,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                Hepatitis B
+                                                Hep B
                                                 </td>
                                                 <td>
                                                         {!! Form::hidden('immunization_hpt_0', 0) !!}

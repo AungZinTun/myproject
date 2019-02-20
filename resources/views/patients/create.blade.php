@@ -13,7 +13,7 @@
                 <div class="col-xs-4 form-group">
                  {!! Form::label('mpi_code', trans('quickadmin.patients.fields.mpi-code').'', ['class' => 'control-label']) !!} :
                  {{ $mpi=strtoupper(uniqid())}}
-                {!! Form::hidden('mpi_code',$mpi,  old('mpi_code'), ['class' => 'form-control', 'placeholder'=>"$mpi"]) !!}                 
+                {!! Form::hidden('mpi_code',json_decode($mpi),  old('mpi_code'), ['class' => 'form-control', 'placeholder'=>"$mpi"]) !!}                 
                 
                     
                 </div>
@@ -30,9 +30,9 @@
                 </div>
                 <div class="col-xs-8">
                 {!! Form::text('date_enrolled', old('date_enrolled'), ['class' => 'form-control date', 'placeholder' => '', 'required' => '']) !!}
-                        <p class="help-block"></p>
+                        <p class="help-block text-danger "></p>
                         @if($errors->has('date_enrolled'))
-                            <p class="help-block">
+                            <p class="help-block text-danger">
                                 {{ $errors->first('date_enrolled') }}
                             </p>
                         @endif
@@ -40,17 +40,25 @@
             </div>       
             <div class="row  form-group">
                 <div class="col-xs-4">
-                {!! Form::label('pmct_code', trans('quickadmin.patients.fields.pmct-code').'*', ['class' => 'control-label']) !!}
-
-                </div>
-                <div class="col-xs-8">
-                {!! Form::text('pmct_code' , old('pmct_code'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
+                {!! Form::label('pmct_code', trans('quickadmin.patients.fields.pmct-code').'*', ['class' => 'control-label mr-0']) !!}
+                <p class="help-block text-danger"></p>
                     @if($errors->has('pmct_code'))
-                        <p class="help-block">
+                        <p class="help-block text-danger">
                             {{ $errors->first('pmct_code') }}
                         </p>
                     @endif
+                </div>
+                <div class="col-xs-4">
+
+                 {!! Form::text('regno'  , old('regno'), ['class' => 'form-control',"id"=>"regno",'onchange'=>'get_pmct_code();', 'placeholder' => 'Register No./RHC', 'required' => '']) !!}
+           
+                </div>
+                <div class="col-xs-4">
+                {!! Form::input(''  , $yt="/". now()->format('y') ."/".strtoupper((Auth()->user()->township->title)),
+                 old(''), ['class' => 'form-control', "id"=>"yt", 'placeholder' => $yt, 'required' => '', "disabled"=>""]) !!}
+                </div>
+                <div class="col-12">
+                {{ Form::hidden('pmct_code', json_decode($yt),old(''), ["id"=>"pmct_code"]) }}
                 </div>
             
             </div>    
@@ -61,9 +69,9 @@
                 </div>
                 <div class="col-xs-8">
                 {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
+                    <p class="help-block text-danger"></p>
                     @if($errors->has('name'))
-                        <p class="help-block">
+                        <p class="help-block text-danger">
                             {{ $errors->first('name') }}
                         </p>
                     @endif
@@ -71,15 +79,15 @@
             </div>       
             <div class="row  form-group">
                 <div class="col-xs-4">
-                {!! Form::label('dob', trans('quickadmin.patients.fields.dob').'*', ['class' => 'control-label']) !!}
+                {!! Form::label('dob', trans('quickadmin.patients.fields.dob').'*', ['class' => 'control-label', "max"=>"now()" ]) !!}
 
                 </div>
                 <div class="col-xs-8">
                         
                     {!! Form::text('dob', old('dob'), ['class' => 'form-control date', 'placeholder' => '', 'required' => '']) !!}
-                    <p class="help-block"></p>
+                    <p class="help-block text-danger"></p>
                     @if($errors->has('dob'))
-                        <p class="help-block">
+                        <p class="help-block text-danger">
                             {{ $errors->first('dob') }}
                         </p>
                     @endif
@@ -92,9 +100,9 @@
                 </div>
                 <div class="col-xs-8">
                 {!! Form::text('address', old('address'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
-                <p class="help-block"></p>
+                <p class="help-block text-danger"></p>
                     @if($errors->has('address'))
-                        <p class="help-block">
+                        <p class="help-block text-danger">
                             {{ $errors->first('address') }}
                         </p>
                     @endif
@@ -111,9 +119,9 @@
                          
                             {!! Form::number('gravida', old('gravida'), ['class' => 'form-control', 'placeholder' => 'G', 'required' => '']) !!}   
                                
-                                <p class="help-block"></p>
+                                <p class="help-block text-danger"></p>
                                 @if($errors->has('gravida'))
-                                    <p class="help-block">
+                                    <p class="help-block text-danger">
                                         {{ $errors->first('gravida') }}   
                                     </p>
                                     @endif
@@ -133,9 +141,9 @@
                 <div class="col-xs-8">
                     
                     {!! Form::text('edd', old('edd'), ['class' => 'form-control date', 'placeholder' => '', 'required' => '']) !!}
-                            <p class="help-block"></p>
+                            <p class="help-block text-danger"></p>
                             @if($errors->has('edd'))
-                                <p class="help-block">
+                                <p class="help-block text-danger">
                                     {{ $errors->first('edd') }}
                                 </p>
                             @endif
@@ -159,35 +167,16 @@
                         Unknown
                     </label>
                 </div>
-            </div>
-
-
-                 
-                
-                    
-         
-                 
-                 
-           
-                 
+            </div>  
        
         {!! Form::submit('save and next', ['class' => 'btn btn-success']) !!}
     {!! Form::close() !!}
 
-           
-              
-             
-        
-                 
-                  
-                    
-                </div>
+     </div>
             </div>
             
         </div>
     </div>
-
-   
 @stop
 
 @section('javascript')
@@ -207,6 +196,15 @@
             });
             
         });
+    </script>
+    <script>
+      
+       
+       function get_pmct_code(){
+        var yt=document.getElementById("yt").name;
+        var regno=document.getElementById("regno").value;
+        document.getElementById("pmct_code").value=regno+yt;
+       }
     </script>
             
 @stop

@@ -26,9 +26,10 @@ class PatientController extends Controller
         if (! Gate::allows('patient_access')) {
             return abort(401);
         }
-
-        $patients= Patient::where('user_id', Auth::id() )->get();
-        $total=$patients->count();
+      
+        $patients= Patient::where('user_id', Auth::id() )->orderby('created_at', 'desc')->simplePaginate(10);
+        $all_patients=Patient::where('user_id', Auth::id() )->get();
+        $total=$all_patients->count();
         return view('patients.index', compact('patients', 'total'));
     }
 
