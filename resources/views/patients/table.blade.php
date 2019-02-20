@@ -1,4 +1,4 @@
-<table class="table table-xs table-borderless text-condent table-responsive" id="patients-table">
+<table class="table table-sm" id="patients-table">
     <thead>
         <tr>
             <th>Date</th>
@@ -8,11 +8,10 @@
             <!-- <th>Address</th> -->
             <th>Edd</th>
             <th>Hiv Status</th>
-            <th>Hiv Test Date</th>
-            <th>Hiv Test Place</th>
+            <!-- <th>Hiv Test Date</th>
+            <th>Hiv Test Place</th> -->
             <th>Current Art Option</th>
             <th>Current Art Status</th>
-        
             <!-- <th colspan="3">Action</th> -->
         </tr>
     </thead>
@@ -26,8 +25,8 @@
             <!-- <td>{!! $patient->address !!}</td> -->
             <td>{!! $patient->edd !!}</td>
             <td>{!! $patient->hiv_status !!}</td>
-            <td>{!! $patient->hiv_test_date !!}</td>
-            <td>{!! $patient->hiv_test_place !!}</td>
+            <!-- <td>{!! $patient->hiv_test_date !!}</td> -->
+            <!-- <td>{!! $patient->hiv_test_place !!}</td> -->
             <td>{!! $patient->current_art_option !!}</td>
             <td>{!! $patient->current_art_status !!}</td>
            
