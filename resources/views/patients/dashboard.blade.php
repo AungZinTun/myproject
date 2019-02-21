@@ -4,14 +4,14 @@
 @section('content')
 
 <div class="panel">
-    <div class="panel-heading">
+    <div class="panel-heading table-responsive">
         <div class="row">
             <div class="col-xs-12">
 
             </div>
         </div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body table-responsive">
         <div class="row">
             <div class="col-xs-12">
             <canvas id="monthlyPatient" ></canvas>

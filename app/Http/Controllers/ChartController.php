@@ -22,7 +22,6 @@ class ChartController extends Controller
         }
         return $month_array;
     }
-
     function getMonthlyPatient($month){
         $monthly_patient_count=Patient::where('user_id', Auth::id())->whereMonth('date_enrolled', $month)->get()->count();
         return $monthly_patient_count;
