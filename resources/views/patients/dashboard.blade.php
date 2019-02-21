@@ -67,7 +67,6 @@ var charts = {
             data: {
                 labels: response.months, // The response got from the ajax request containing all month names in the database
                 datasets: [{
-                
                     label: "PMCT Positive",
                     lineTension: 0.3,
                     backgroundColor: "rgba(2,117,216,0.2)",

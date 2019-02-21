@@ -24,7 +24,7 @@ class ChartController extends Controller
     }
 
     function getMonthlyPatient($month){
-        $monthly_patient_count=Patient::where('user_id', Auth::id())->whereMonth('created_at', $month)->get()->count();
+        $monthly_patient_count=Patient::where('user_id', Auth::id())->whereMonth('date_enrolled', $month)->get()->count();
         return $monthly_patient_count;
     }
     function getMonthlyPatients(){
@@ -41,7 +41,7 @@ class ChartController extends Controller
         $max_no=max( $monthly_patient_count_array );
         $max= round(($max_no+10/2)/10)*10;
         $monthly_patient_data=array(
-            'months'=>$month_name_array,
+            'Year'=>$month_name_array,
             'patients'=>$monthly_patient_count_array,
             'max'=>$max
         );
