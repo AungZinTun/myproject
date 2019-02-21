@@ -3,6 +3,8 @@ Route::get('/', function () { return redirect('/admin/home'); });
 Route::get('/dashboard', 'HomeController@dashboard');
 Route::get('/calendar', 'SystemCalendarController@index'); 
 
+Route::get('/chart', 'ChartController@getMonthlyPatients'); 
+
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
 $this->post('login', 'Auth\LoginController@login')->name('auth.login');

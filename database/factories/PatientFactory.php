@@ -2,10 +2,10 @@
 
 $factory->define(App\Patient::class, function (Faker\Generator $faker) {
     return [
-        "user_id" =>  collect(["3","2"])->random(),
-        "township_id" =>  collect(["1","2",])->random(),
-        "mpi_code" => $faker->name,
-        "date_enrolled" => $faker->date("Y-m-d", $max = 'now'),
+        "user_id" =>  collect([2,3,4,5,6,7,8,9,10,11])->random(),
+        "township_id" =>  collect([1,2,3,4,5,6,7,8,9,10])->random(),
+        "mpi_code" => $faker->unique()->randomNumber($nbDigits = 8),
+        "date_enrolled" => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now'),
         "pmct_code" => $faker->name,
         "name" => $faker->name,
         "dob" => $faker->date("Y-m-d", $max = 'now'),

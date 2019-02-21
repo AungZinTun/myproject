@@ -45,7 +45,6 @@ class HomeController extends Controller
            
         else {
 
-             $patients=Patient::where('user_id', Auth::id() )->get();
             return view('patients.dashboard');}
 
     }
