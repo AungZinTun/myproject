@@ -1,5 +1,11 @@
-<table class="table table-borderless" id="patients-table">
+<table class="table" id="patients-table">
     <thead>
+        <tr class="bg-success text-centered">
+            <th colspan=7 class="bg-success text-center"> Mother</th>
+            <th colspan=3 class="bg-success text-center">Baby Outcome</th>
+            <th colspan=4 class="bg-success text-center">Early Infant Diagnosis</th>
+            <th colspan=4 class="bg-success text-center"> Infant Feeding Option </th>
+        </tr>
         <tr class="bg-success">
             <th>Date</th>
             <th>PMCT ID</th>
@@ -12,11 +18,21 @@
             <th>Hiv Test Place</th> -->
             <!-- <th>Art</th> -->
             <th>ART</th>
-            <th>EID 1</th>
-            <th>EID 2</th>
-            <th>EID 3</th>
-            <th>EID 3</th>
+            <th>Pregnancy Outcome</th>
+
+            <th> Baby Outcome </th>
+            <th>PEP</th>
+            <th>CPT</th>
+
+            <th> Mth 0</th>
+            <th> Mth 3</th>
+            <th> Mth 9 </th>
+            <th> Mth 24</th>
             <!-- <th colspan="3">Action</th> -->
+            <th> Mth 0</th>
+            <th> Mth 3</th>
+            <th> Mth 9 </th>
+            <th> Mth 24</th>
         </tr>
     </thead>
     <tbody>
@@ -32,8 +48,35 @@
             <!-- <td>{!! $patient->hiv_test_date !!}</td> -->
             <!-- <td>{!! $patient->hiv_test_place !!}</td> -->
             <!-- <td>{!! $patient->current_art_option !!}</td> -->
-            <td>{!! $patient->current_art_status !!}</td>
-            <td class='text-xs'>   <a href="/patients/{{$patient->id}}/page6">
+            <td> @if ( $patient->current_art_status==1) <span class="text-success">On ART </span>
+                  @else <span class="text-danger">No ART</span> @endif
+            </td>
+            <td> @if($patient->pregnancy_outcome==1) LV
+                @elseif ($patient->pregnancy_outcome==2) Ab
+                @elseif ($patient->pregnancy_outcome==3) SB
+                @elseif ($patient->pregnancy_outcome==4) MD
+                @else -
+                @endif
+             </td>
+             <!-- baby_outcome -->
+             <td> @if($patient->baby_outcome==1)Alive 
+                @elseif($patient->baby_outcome==1)Dead
+                @else - @endif
+             </td>
+             <td>
+             @if ($patient->pep==1) <input type="checkbox" checked disabled > </input> 
+             @else <input type="checkbox" disabled> </input> 
+             @endif
+            
+             </td>
+             <td> 
+             @if ($patient->cpt==1) <input type="checkbox" checked disabled > </input> 
+             @else <input type="checkbox" disabled> </input> 
+             @endif
+            
+             </td>
+             <!-- dnapcr -->
+            <td class='text-xs'>   <a href="/patients/{{$patient->id}}/page5">
             @if ($patient->dna_pcr_result=="1") <span class="label btn-danger text-danger label-many"> D </span> 
                   @elseif ($patient->dna_pcr_result=="0") <span class="label btn-success text-danger label-many">ND</span>
                   @else - @endif
@@ -57,6 +100,35 @@
                   @else - @endif
             </a> 
             </td>
+              <!-- dnapcr -->
+            <td class="text-xs"> 
+                @if ($patient->feeding_option==1) EBF
+                @elseif ($patient->feeding_option==2) MXF
+                @elseif ($patient->feeding_option==3) BTF 
+                @else - @endif
+            </td>
+            <td class="text-xs"> 
+                @if ($patient->feeding_option1==1) EBF
+                @elseif ($patient->feeding_option1==2) MXF
+                @elseif ($patient->feeding_option1==3) BTF 
+                @else - @endif
+            </td>
+
+            <td class="text-xs"> 
+                @if ($patient->feeding_option2==1) EBF
+                @elseif ($patient->feeding_option2==2) MXF
+                @elseif ($patient->feeding_option2==3) BTF 
+                @else - @endif
+            </td>
+
+            <td class="text-xs"> 
+                @if ($patient->feeding_option3==1) EBF
+                @elseif ($patient->feeding_option3==2) MXF
+                @elseif ($patient->feeding_option3==3) BTF 
+                @else - @endif
+            </td>
+
+
            
             <!-- <td>
                 {!! Form::open(['route' => ['patients.destroy', $patient->id], 'method' => 'delete']) !!}
