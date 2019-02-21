@@ -18,10 +18,12 @@
         @include('flash::message')
             <div class="panel">
                 <div class="panel-body table-responsive">
+                
                     @include('patients.table')
+               
                 </div>
                 <div class="row text-center bg-success">
-        <div class="col-xs-12 text-sm">
+        <div class="col-xs-12 text-primary">
         <span class="label">   {{ $patients->links() }}</span>
         </div>
 </div>
