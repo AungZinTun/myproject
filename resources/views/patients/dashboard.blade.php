@@ -4,17 +4,17 @@
 @section('content')
 
 <div class="panel">
-    <div class="panel-heading table-responsive">
+    <!-- <div class="panel-heading table-responsive">
         <div class="row">
             <div class="col-xs-12">
-
+                <canvas id="myBarChart"></canvas>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="panel-body table-responsive">
         <div class="row">
             <div class="col-xs-12">
-            <canvas id="monthlyPatient" ></canvas>
+            <canvas style="display: block;" id="{!! $chart->id !!}"></canvas>  @include('charts::loader')  
             </div>
         </div>
     </div>
@@ -26,96 +26,27 @@
 
 @section('javascript')
     @parent
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script>
-   
-<script>
-( function ( $ ) {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
-var charts = {
-    init: function () {
-        // -- Set new default font family and font color to mimic Bootstrap's default styling
-        Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-        Chart.defaults.global.defaultFontColor = '#292b2c';
+   {!! $chart->script() !!}
 
-        this.ajaxGetPostMonthlyData();
+ <!-- <script>
+   var ctx = document.getElementById('myBarChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
 
+    // The data for our dataset
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "My First dataset",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45],
+        }]
     },
-
-    ajaxGetPostMonthlyData: function () {
-        var urlPath =  'http://' + window.location.hostname + '/chart';
-        var request = $.ajax( {
-            method: 'GET',
-            url: urlPath
-    } );
-
-        request.done( function ( response ) {
-            console.log( response );
-            charts.createCompletedJobsChart( response );
-        });
-    },
-
-    /**
-     * Created the Completed Jobs Chart
-     */
-    createCompletedJobsChart: function ( response ) {
-
-        var ctx = document.getElementById("monthlyPatient");
-        var myLineChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: response.months, // The response got from the ajax request containing all month names in the database
-                datasets: [{
-                    label: "PMCT Positive",
-                    lineTension: 0.3,
-                    backgroundColor: "rgba(2,117,216,0.2)",
-                    borderColor: "rgba(2,117,216,1)",
-                    pointRadius: 5,
-                    pointBackgroundColor: "rgba(2,117,216,1)",
-                    pointBorderColor: "rgba(255,255,255,0.8)",
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(2,117,216,1)",
-                    pointHitRadius: 20,
-                    pointBorderWidth: 2,
-                    data: response.patients // The response got from the ajax request containing data for the completed jobs in the corresponding months
-                }],
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        time: {
-                            unit: 'date'
-                        },
-                        gridLines: {
-                            display: false
-                        },
-                        ticks: {
-                            maxTicksLimit: 7
-                        }
-                    }],
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                            max: response.max, // The response got from the ajax request containing max limit for y axis
-                            maxTicksLimit: 5
-                        },
-                        gridLines: {
-                            color: "rgba(0, 0, 0, .125)",
-                        }
-                    }],
-                },
-                legend: {
-                    display: false
-                }
-            }
-        });
-    }
-};
-
-charts.init();
-
-} )( jQuery );
-</script>
+});
+</script> -->
 
 @endsection

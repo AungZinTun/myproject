@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use App\Patient;
+use App\Charts\chartjs;
 
 class HomeController extends Controller
 {
@@ -45,7 +47,20 @@ class HomeController extends Controller
            
         else {
 
-            return view('patients.dashboard');}
+            $data= DB::table('patients')
+            ->groupBy('created_at')
+            ->get([DB::raw('count(patients.id) as patients')]);
+
+            $chart=new chartjs;
+            $chart->labels(['One', 'Two', 'Three' , 'four']);
+            $chart->dataset('My dataset 1', 'line', collect([1, 2, 1, 4]));
+            $chart->reset();
+            $chart->loader(true);
+             $chart-> loaderColor('blue');
+             $chart->type("line");
+
+
+            return view('patients.dashboard', compact('chart'));}
 
     }
 
