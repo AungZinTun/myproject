@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Patient;
 use App\Charts\chartjs;
+use Illuminate\Support\Carbon;
 
 class HomeController extends Controller
 {
@@ -34,7 +35,7 @@ class HomeController extends Controller
            
         else {
         
-            return redirect('/patients');}
+            return redirect('/dashboard');}
     }
 
     public function dashboard()
@@ -47,20 +48,42 @@ class HomeController extends Controller
            
         else {
 
-            $data= DB::table('patients')
-            ->groupBy('created_at')
-            ->get([DB::raw('count(patients.id) as patients')]);
+            $year= Patient::select('id', 'date_enrolled')  ->orderBy('date_enrolled', 'ASC')
+            ->get()
+          
+            ->groupBy(function($date){
+                return Carbon::parse($date->date_enrolled)->format('Y');
+                    });
+                    $yearCount=[];
+                    $yearArr=[];
+                    foreach ( $year as $key=> $value ){
+                        $yearCount[]=count($value);
+                        $yearly_table[$key]=count($value);
+                        $yearArr[] = $key; 
+                
+            }
+         
+                        
+            // return $yearly_table;
+        
 
             $chart=new chartjs;
-            $chart->labels(['One', 'Two', 'Three' , 'four']);
-            $chart->dataset('My dataset 1', 'line', collect([1, 2, 1, 4]));
+         
+       
+            $chart->labels($yearArr);
+            $chart->dataset('PMCT Positive', 'line', $yearCount )->color('pink')->backgroundColor('pink');
             $chart->reset();
             $chart->loader(true);
-             $chart-> loaderColor('blue');
-             $chart->type("line");
+             $chart->loaderColor('blue');
+             $chart->type("bar");
+             $chart->title("Trend of PMCT Positive");
+            
+
+          
 
 
-            return view('patients.dashboard', compact('chart'));}
+
+            return view('patients.dashboard', compact('chart', 'yearly_table'));}
 
     }
 
