@@ -54,8 +54,12 @@
             <!-- <td>{!! $patient->hiv_test_date !!}</td> -->
             <!-- <td>{!! $patient->hiv_test_place !!}</td> -->
             <!-- <td>{!! $patient->current_art_option !!}</td> -->
-            <td> @if ( $patient->current_art_status==1) <span class="text-success">On ART </span>
-                  @else <span class="text-danger">No ART</span> @endif
+            <td > <a href=" @if ( $patient->hiv_status==1)/patients/{{$patient->id}}/page2 
+                            @else /patients/{{$patient->id}}/page3 @endif ">
+                    @if ( $patient->current_art_status==1) <span class="label btn-success btn-sm text-success">On ART </span>
+                        @elseif ( $patient->current_art_status==NULL) <span class="label">--</span>
+                        @else <span class="label btn-danger btn-sm text-danger">No ART</span> @endif
+                </a>
             </td>
              <td class="text-center"> @if ( $patient->spouse_test_result==1) <span class="text-danger">P</span>
                   @elseif ( $patient->spouse_test_result==0) <span class="text-success">N</span>

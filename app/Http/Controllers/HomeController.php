@@ -88,8 +88,9 @@ class HomeController extends Controller
             $pie->labels(['On-ART', 'Not On ART', 'Unknown']);
             $pie->dataset('My dataset', 'pie',  array_values($art_status->toarray()))->backgroundColor(['green','red','grey']);
                  $pie->type("pie");
-                 $pie->height(200);
                  $pie->reset();
+                 $pie->options(['legend'=>(['display'=> false]), 'tooltips'=>(['enabled'=>true]) ]);
+              
 
             return view('patients.dashboard', compact('chart', 'pie'));}
 

@@ -4,25 +4,71 @@
 @section('content')
 
 <div class="panel">
-    <!-- <div class="panel-heading table-responsive">
-        <div class="row">
+    <div class="panel-heading">
+        <div class="row bg-default">
             <div class="col-xs-12">
-                <canvas id="myBarChart"></canvas>
+              <h2 class="panel-title">PMCT Situation in {{Auth()->user()->township->title}} Township</h2>
             </div>
         </div>
-    </div> -->
-    <div class="panel-body table-responsive">
+        <hr>
+      
         <div class="row">
+            <div class="col-xs-4">
+               
+                <div class="panel panel-danger">
+                    <div class="panel-body bg-danger">
+                       <div class="text-lg display-1 text-danger text-center"> 50 HIV(+)ve <span class="text-sm text-muted">  <p></p> Mothers </span></div> 
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel panel-success">
+                    <div class="panel-body bg-success">
+                       <div class="text-lg display-1 text-success text-center"> 45 ART   <span class="text-sm text-muted">  <p></p> intervention</span></div> 
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel panel-info">
+                    <div class="panel-body bg-info">
+                       <div class="text-lg display-1 text-info text-center"> 40 Children <span class="text-sm text-muted">   <p></p>result HIV(-)ve </span></div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body table-responsive">
+        <div class="row text-xs">
             <div class="col-xs-12">
-                <div id="app">
-                    {!! $chart->container() !!}
+                <div class="panel panel-default" id="app">
+                  <div class="panel-body">
+                  {!! $chart->container() !!} 
+                  </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-6">
-                <div id="app">
-                    {!! $pie->container() !!}
+                <div class="panel panel-default" id="app">
+                <div class="panel-heading bg-success">
+                    ART Status
+                </div>
+                 <div class="panel-body">
+               
+                 {!! $pie->container() !!}
+                 </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="panel panel-default" id="app">
+                <div class="panel-heading bg-success">
+                  Chart2
+                </div>
+                 <div class="panel-body">
+               
+                 {!! $pie->container() !!}
+                 </div>
                 </div>
             </div>
         </div>
