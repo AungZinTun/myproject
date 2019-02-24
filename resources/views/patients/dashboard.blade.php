@@ -14,10 +14,21 @@
     <div class="panel-body table-responsive">
         <div class="row">
             <div class="col-xs-12">
-            <canvas style="display: block;" id="{!! $chart->id !!}"></canvas>  @include('charts::loader')  
+                <div id="app">
+                    {!! $chart->container() !!}
+                </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div id="app">
+                    {!! $pie->container() !!}
+                </div>
+            </div>
+        </div>
+        
     </div>
+   
 </div>
 
   
@@ -29,6 +40,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
    {!! $chart->script() !!}
+   {!! $pie->script() !!}
 
  <!-- <script>
    var ctx = document.getElementById('myBarChart').getContext('2d');

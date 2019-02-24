@@ -47,43 +47,51 @@ class HomeController extends Controller
             return view('admin.dashboard');}
            
         else {
-
-            $year= Patient::select('id', 'date_enrolled')  ->orderBy('date_enrolled', 'ASC')
-            ->get()
-          
-            ->groupBy(function($date){
-                return Carbon::parse($date->date_enrolled)->format('Y');
-                    });
+            
+            
+            $yearly_patient= Patient::select('id', 'date_enrolled')->where('user_id', Auth::id())  ->orderBy('date_enrolled', 'ASC')
+                    ->get()
+                
+                    ->groupBy(function($date){
+                        return Carbon::parse($date->date_enrolled)->format('Y');
+                            });
+                  
                     $yearCount=[];
                     $yearArr=[];
-                    foreach ( $year as $key=> $value ){
-                        $yearCount[]=count($value);
-                        $yearly_table[$key]=count($value);
-                        $yearArr[] = $key; 
-                
-            }
+                foreach ( $yearly_patient as $key=>$value ){
+                    // $yearCount[]=count($value);
+                    $yearCount[$key]=count($value);
+                    $yearArr[] = $key; 
+                 }
+
+            $art_status=Patient::select('id', 'current_art_status')->where('user_id', Auth::id())->orderBy('current_art_status', 'Desc') ->get()
+                 ->groupBy('current_art_status');
+                 foreach ($art_status as $key=>$value ){
+                     $art_status[$key]=count($value);
+                 }
          
                         
-            // return $yearly_table;
+            // return $art_status;
         
 
-            $chart=new chartjs;
-         
-       
-            $chart->labels($yearArr);
-            $chart->dataset('PMCT Positive', 'line', $yearCount )->color('pink')->backgroundColor('pink');
-            $chart->reset();
-            $chart->loader(true);
-             $chart->loaderColor('blue');
-             $chart->type("bar");
-             $chart->title("Trend of PMCT Positive");
-            
+            $chart=new chartjs;       
+                $chart->labels(array_keys($yearCount));
+                // $chart->dataset('On ART', 'line', $yearCount )->color('red')->backgroudColor('red');
+                $chart->dataset('PMCT Positive', 'line', array_values($yearCount) )->color('pink')->backgroundColor('pink');
+                $chart->height(200);
+                $chart->reset();
+                $chart->loader(true);
+                $chart->loaderColor('blue');
+                $chart->type("bar");
+                $chart->title("Trend of PMCT Positive");   
+            $pie=new chartjs;
+            $pie->labels(['On-ART', 'Not On ART', 'Unknown']);
+            $pie->dataset('My dataset', 'pie',  array_values($art_status->toarray()))->backgroundColor(['green','red','grey']);
+                 $pie->type("pie");
+                 $pie->height(200);
+                 $pie->reset();
 
-          
-
-
-
-            return view('patients.dashboard', compact('chart', 'yearly_table'));}
+            return view('patients.dashboard', compact('chart', 'pie'));}
 
     }
 
