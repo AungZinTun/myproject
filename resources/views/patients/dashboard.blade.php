@@ -17,7 +17,7 @@
                
                 <div class="panel panel-danger">
                     <div class="panel-body bg-danger">
-                       <div class="text-lg display-1 text-danger text-center"> 50 HIV(+)ve <span class="text-sm text-muted">  <p></p> Mothers </span></div> 
+                       <div class="text-lg display-1 text-danger text-center"> 50 <p></p> HIV(+)ve <span class="text-sm text-muted">   Mothers </span></div> 
                     </div>
 
                 </div>
@@ -25,14 +25,14 @@
             <div class="col-xs-4">
                 <div class="panel panel-success">
                     <div class="panel-body bg-success">
-                       <div class="text-lg display-1 text-success text-center"> 45 ART   <span class="text-sm text-muted">  <p></p> intervention</span></div> 
+                       <div class="text-lg display-1 text-success text-center"> 45 <p></p> ART   <span class="text-sm text-muted">  intervention</span></div> 
                     </div>
                 </div>
             </div>
             <div class="col-xs-4">
                 <div class="panel panel-info">
                     <div class="panel-body bg-info">
-                       <div class="text-lg display-1 text-info text-center"> 40 Children <span class="text-sm text-muted">   <p></p>result HIV(-)ve </span></div> 
+                       <div class="text-lg display-1 text-info text-center"> 40 <p></p> Children <span class="text-sm text-muted"> result HIV(-)ve </span></div> 
                     </div>
                 </div>
             </div>
@@ -42,6 +42,9 @@
         <div class="row text-xs">
             <div class="col-xs-12">
                 <div class="panel panel-default" id="app">
+                <div class="panel-heading">
+               Trend of PMCT Positive
+                </div>
                   <div class="panel-body">
                   {!! $chart->container() !!} 
                   </div>

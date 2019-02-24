@@ -78,17 +78,19 @@ class HomeController extends Controller
                 $chart->labels(array_keys($yearCount));
                 // $chart->dataset('On ART', 'line', $yearCount )->color('red')->backgroudColor('red');
                 $chart->dataset('PMCT Positive', 'line', array_values($yearCount) )->color('pink')->backgroundColor('pink');
+                $chart->options(['legend'=>(['display'=> false])]);
                 $chart->height(200);
-                $chart->reset();
                 $chart->loader(true);
                 $chart->loaderColor('blue');
                 $chart->type("bar");
-                $chart->title("Trend of PMCT Positive");   
+              
             $pie=new chartjs;
             $pie->labels(['On-ART', 'Not On ART', 'Unknown']);
             $pie->dataset('My dataset', 'pie',  array_values($art_status->toarray()))->backgroundColor(['green','red','grey']);
                  $pie->type("pie");
                  $pie->reset();
+                 $chart->loader(true);
+                 $chart->loaderColor('blue');
                  $pie->options(['legend'=>(['display'=> false]), 'tooltips'=>(['enabled'=>true]) ]);
               
 
