@@ -47,7 +47,7 @@
                                         <td>
                                             1.1 ANC Target
                                         </td>
-                                        <td style="width: 100px;" >
+                                        <td style="width: 50px;" >
                                        100
                                         </td>
                                     </tr>
@@ -112,7 +112,7 @@
                                         <td>
                                         2.4	ART Coverage 
                                         </td>
-                                        <td  style="width: 100px;">
+                                        <td  style="width: 50px;">
                                         90 %
                                         </td>
                                     </tr>
@@ -133,7 +133,7 @@
                                         3.1	Live Birth
 
                                         </td>
-                                        <td  style="width: 100px;">
+                                        <td  style="width: 50px;">
                                        7
                                         </td>
                                     </tr>
@@ -187,16 +187,16 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                        3.1	Reactive 
+                                        4.1	Reactive 
 
                                         </td>
-                                        <td  style="width: 100px;">
+                                        <td  style="width: 50px;">
                                        0
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                        3.2	Non Reactive 
+                                        4.2	Non Reactive 
 
                                         </td>
                                         <td>
@@ -205,7 +205,7 @@
                                     </tr>
                                     <tr class="text-bold">
                                         <td>
-                                        3.5	MTCT Rate
+                                        4.5	MTCT Rate
 
                                         </td>
                                         <td>

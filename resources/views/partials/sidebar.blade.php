@@ -54,7 +54,7 @@
 
              <li class="treeview">
                <a href="{{ route('report') }}     ">
-               <i class="fa fa-file"></i>
+               <i class="fa fa-file text-primary"></i>
                 Report</a>
                 
             </li>     

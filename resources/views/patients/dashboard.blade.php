@@ -13,29 +13,46 @@
         <hr>
       
         <div class="row">
-            <div class="col-xs-4">
-               
-                <div class="panel panel-danger">
-                    <div class="panel-body bg-danger">
-                       <div class="text-lg display-1 text-danger text-center"> 50 <p></p> HIV(+)ve <span class="text-sm text-muted">   Mothers </span></div> 
-                    </div>
+           
+            <div class="col-xs-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="row mr-0">
+                            <div class="col-xs-4">
+                                <div class="panel panel-danger">
+                                    <div class="panel-body bg-danger">
+                                        <div class="text-lg display-1 text-danger text-center"> 50 <p></p> HIV(+)ve <span class="text-sm text-muted">   Mothers </span></div> 
+                                        </div>
 
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel panel-success">
-                    <div class="panel-body bg-success">
-                       <div class="text-lg display-1 text-success text-center"> 45 <p></p> ART   <span class="text-sm text-muted">  intervention</span></div> 
+                                    </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="panel panel-success">
+                                    <div class="panel-body bg-success">
+                                    <div class="text-lg display-1 text-success text-center"> 45 <p></p> ART   <span class="text-sm text-muted">  intervention</span></div> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="panel panel-info">
+                                    <div class="panel-body bg-info">
+                                    <div class="text-lg display-1 text-info text-center"> 40 <p></p> Children <span class="text-sm text-muted"> result HIV(-)ve </span></div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="panel-footer">
+                        
+                        <small class="text-xs text-italic text-info"> Data between (2010-1-1 to 2019-1-1) last updated 2 weeks ago  </small>
+                        <a href="{{ route ('report')}} "> <small class="text-right text-sm btn btn-link"> Detail Report</small></a>
                     </div>
                 </div>
+            
+            
             </div>
-            <div class="col-xs-4">
-                <div class="panel panel-info">
-                    <div class="panel-body bg-info">
-                       <div class="text-lg display-1 text-info text-center"> 40 <p></p> Children <span class="text-sm text-muted"> result HIV(-)ve </span></div> 
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     <div class="panel-body table-responsive">
@@ -66,7 +83,7 @@
             <div class="col-xs-6">
                 <div class="panel panel-default" id="app">
                 <div class="panel-heading bg-success">
-                  Chart2
+                  Outcome Chart
                 </div>
                  <div class="panel-body">
                
