@@ -1,9 +1,10 @@
 <?php
 Route::get('/', function () { return redirect('/admin/home'); });
-Route::get('/dashboard', 'HomeController@dashboard');
+Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('/calendar', 'SystemCalendarController@index'); 
 
 Route::get('/chart', 'ChartController@getAllYears'); 
+Route::get('/report', 'ReportController@index')->name('report'); 
 
 // Authentication Routes...
 $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');

@@ -51,6 +51,14 @@
                 </a>
             </li>
 
+
+             <li class="treeview">
+               <a href="{{ route('report') }}     ">
+               <i class="fa fa-file"></i>
+                Report</a>
+                
+            </li>     
+
             <li>
             <style > .badge {
         padding: 1px 9px 2px;
