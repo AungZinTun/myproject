@@ -18,35 +18,41 @@
                 <div class="panel">
                     <div class="panel-body">
                         <div class="row mr-0">
-                            <div class="col-xs-4">
-                                <div class="panel panel-danger">
-                                    <div class="panel-body bg-danger">
-                                        <div class="text-lg display-1 text-danger text-center"> 50 <p></p> HIV(+)ve <span class="text-sm text-muted">   Mothers </span></div> 
+                            <div class="col-md-4 col-xs-12">
+                                <div class="info-box bg-danger">
+                                     <span class="info-box-icon bg-red"><i class="fa fa-user"></i></span>
+                                    <div class="info-box-content">
+                                        <div class="info-box-number"> 50  </div> 
+                                        <span class="info-box-text">   HIV(+)ve Mothers </span>
                                         </div>
 
-                                    </div>
+                                 </div>
                             </div>
-                            <div class="col-xs-4">
-                                <div class="panel panel-success">
-                                    <div class="panel-body bg-success">
-                                    <div class="text-lg display-1 text-success text-center"> 45 <p></p> ART   <span class="text-sm text-muted">  intervention</span></div> 
-                                    </div>
-                                </div>
+                            <div class="col-md-4  col-xs-12">
+                                <div class="info-box info-box-danger">
+                                <span class="info-box-icon bg-aqua"><i class="fa fa-medkit"></i></span>
+                                    <div class="info-box-content">
+                                        <div class="info-box-number"> 45  </div> 
+                                        <span class="info-box-text">  ART Intervention </span>
+                                        </div>
+
+                                 </div>
                             </div>
-                            <div class="col-xs-4">
-                                <div class="panel panel-info">
-                                    <div class="panel-body bg-info">
-                                    <div class="text-lg display-1 text-info text-center"> 40 <p></p> Children <span class="text-sm text-muted"> result HIV(-)ve </span></div> 
-                                    </div>
-                                </div>
+                            <div class="col-md-4 col-xs-12">
+                                <div class="info-box info-box-danger">
+                                <span class="info-box-icon bg-green"><i class="fa fa-heartbeat"></i></span>
+                                    <div class="info-box-content">
+                                        <div class="info-box-number"> 40  </div> 
+                                        <span class="info-box-text">  Children result HIV(-)ve </span>
+                                        </div>
+
+                                 </div>
                             </div>
-                        </div>
-                        
                     </div>
                     <div class="panel-footer">
                         
                         <small class="text-xs text-italic text-info"> Data between (2010-1-1 to 2019-1-1) last updated 2 weeks ago  </small>
-                        <a href="{{ route ('report')}} "> <small class="text-right text-sm btn btn-link"> Detail Report</small></a>
+                        <a href="{{ route ('report')}} "> <small class="text-right text-sm btn btn-default"> See Detail Report</small></a>
                     </div>
                 </div>
             
