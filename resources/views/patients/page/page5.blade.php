@@ -52,12 +52,12 @@
                 <div class="col-xs-8">
                 <div>
                         <label>
-                            {!! Form::radio('baby_outcome', '1', false, ["id"=>"Outcome_alive", "onclick"=>"outcomeCheck();"]) !!}
+                            {!! Form::radio('baby_outcome', '0', false, ["id"=>"Outcome_alive", "onclick"=>"outcomeCheck();"]) !!}
                             alive
                         </label>
                
                         <label>
-                            {!! Form::radio('baby_outcome', '0', false,  ["id"=>"Outcome_dead", "onclick"=>"outcomeCheck();"]) !!}
+                            {!! Form::radio('baby_outcome', '1', false,  ["id"=>"Outcome_dead", "onclick"=>"outcomeCheck();"]) !!}
                             dead
                         </label>
                     </div>

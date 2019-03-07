@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ModifyGravidaParityToPatients extends Migration
+class AddDnaPcrNotReasonToPatients extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class ModifyGravidaParityToPatients extends Migration
     public function up()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->Integer('parity', 4)->nullable()->default('0')->change();
-            $table->Integer('gravida', 4)->nullable()->default('0')->change();
+            $table->string('dna_pcr_not_reason')->nullable();
         });
     }
 

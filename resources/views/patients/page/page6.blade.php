@@ -34,8 +34,6 @@
                 </div>
            
             </div>
-
-         
        
         </div>
 
@@ -54,12 +52,12 @@
                 <div class="col-xs-8">
                 <div>
                         <label>
-                            {!! Form::radio('baby_outcome', '1', false, ["id"=>"Outcome_alive", "onclick"=>"outcomeCheck();"]) !!}
+                            {!! Form::radio('baby_outcome1', '0', false, ["id"=>"Outcome_alive", "onclick"=>"outcomeCheck();"]) !!}
                             alive
                         </label>
                
                         <label>
-                            {!! Form::radio('baby_outcome', '0', false,  ["id"=>"Outcome_dead", "onclick"=>"outcomeCheck();"]) !!}
+                            {!! Form::radio('baby_outcome1', '1', false,  ["id"=>"Outcome_dead", "onclick"=>"outcomeCheck();"]) !!}
                             dead
                         </label>
                     </div>
@@ -74,141 +72,51 @@
                     <p class="help-block"></p>
                     @if($errors->has('baby_outcome_dead_date'))
                         <p class="help-block">
-                            {{ $errors->first('baby_outcome_dead_date') }}
+                            {{ $errors->first('baby_outcome_dead_date1') }}
                         </p>
                     @endif
                 </div>
             </div>
            
            <div class="card" id="alive">
-                <div class="row">
-                        <div class="col-xs-4 form-group">
-                            {!! Form::label('pep', trans('quickadmin.patients.fields.pep').'', ['class' => 'control-label']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('pep'))
-                                <p class="help-block">
-                                    {{ $errors->first('pep') }}
-                                </p>
-                            @endif
-                         
-                            
-                        </div>
-                        <div class="col-xs-8">
-                        <div>
-                                <label>
-                                    {!! Form::radio('pep', '1', false, ["id"=>"pepYes", "onclick"=>"pepCheck();"]) !!}
-                                    Yes
-                                </label>
-                     
-                                <label>
-                                    {!! Form::radio('pep', '0', false, ["id"=>"pepNo", "onclick"=>"pepCheck();"]) !!}
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" id="pepOption">
-                        <div class="col-xs-4 form-group">
-                            {!! Form::label('pep_option', trans('quickadmin.patients.fields.pep-option').'', ['class' => 'control-label']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('pep_option'))
-                                <p class="help-block">
-                                    {{ $errors->first('pep_option') }}
-                                </p>
-                            @endif
-                        </div>
-                        <div class="col-xs-8">
-                        <div>
-                                <label>
-                                    {!! Form::radio('pep_option', '1', false, []) !!}
-                                    AZT
-                                </label>
-                                <label>
-                                    {!! Form::radio('pep_option', '2', false, []) !!}
-                                    NVP
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" id="pepNoReason">
-                        <div class="col-xs-4 form-group">
-                            {!! Form::label('pep_not_reason', trans('quickadmin.patients.fields.pep-not-reason').'', ['class' => 'control-label']) !!}
-                        </div>
-                        <div class="col-xs-8">
-                        {!! Form::text('pep_not_reason', old('pep_not_reason'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('pep_not_reason'))
-                                <p class="help-block">
-                                    {{ $errors->first('pep_not_reason') }}
-                                </p>
-                            @endif
-                        
-                        </div>
-                    </div>
+                
                     <div class="row">
                         <div class="col-xs-4 form-group">
-                            {!! Form::label('cpt', trans('quickadmin.patients.fields.cpt').'', ['class' => 'control-label']) !!}
-                        </div>
-                        <div class="col-xs-8">
-                        <p class="help-block"></p>
-                            @if($errors->has('cpt'))
-                                <p class="help-block">
-                                    {{ $errors->first('cpt') }}
-                                </p>
-                            @endif
-                            <div>
-                                <label>
-                                    {!! Form::radio('cpt', '1', false, ["id"=>"cptYes", "onclick"=>"cptCheck();"]) !!}
-                                    Yes
-                                </label>
-                                <label>
-                                    {!! Form::radio('cpt', '0', false,["id"=>"cptNo", "onclick"=>"cptCheck();"]) !!}
-                                    No
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" id="cptNoReason">
-                        <div class="col-xs-4 form-group">
-                            {!! Form::label('cpt_not_reason', trans('quickadmin.patients.fields.cpt-not-reason').'', ['class' => 'control-label']) !!}
-                       
-                        </div>
-                        <div class="col-xs-8">
-                        {!! Form::text('cpt_not_reason', old('cpt_not_reason'), ['class' => 'form-control', 'placeholder' => '']) !!}
-                            <p class="help-block"></p>
-                            @if($errors->has('cpt_not_reason'))
-                                <p class="help-block">
-                                    {{ $errors->first('cpt_not_reason') }}
-                                </p>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 form-group">
-                            {!! Form::label('dna_pcr', trans('quickadmin.patients.fields.dna-pcr').'', ['class' => 'control-label']) !!}
+                            {!! Form::label('dna_pcr1', trans('quickadmin.patients.fields.dna-pcr').'', ['class' => 'control-label']) !!}
                         
                         </div>
                         <div class="col-xs-8">
                         <p class="help-block"></p>
-                            @if($errors->has('dna_pcr'))
+                            @if($errors->has('dna_pcr1'))
                                 <p class="help-block">
-                                    {{ $errors->first('dna_pcr') }}
+                                    {{ $errors->first('dna_pcr1') }}
                                 </p>
                             @endif
                             <div>
                                 <label>
-                                    {!! Form::radio('dna_pcr', '1', false, ["id"=>"dnaTested", "onclick"=>"dnaCheck();"]) !!}
+                                    {!! Form::radio('dna_pcr1', '1', false, ["id"=>"dnaTested", "onclick"=>"dnaCheck();"]) !!}
                                     Tested
                                 </label>
                     
                                 <label>
-                                    {!! Form::radio('dna_pcr', '0', false, ["id"=>"dnaNotTested", "onclick"=>"dnaCheck();"]) !!}
+                                    {!! Form::radio('dna_pcr1', '0', false, ["id"=>"dnaNotTested", "onclick"=>"dnaCheck();"]) !!}
                                     Not Tested
                                 </label>
                             </div>
                             
                         </div>
                     </div>
+                    <div class="row" id="dnaNotReason">
+                            <div class="col-xs-4 form-group">
+                            {!! Form::label('dna_pcr_not_reason', 'Reason for no DNA PCR Test'.'', ['class' => 'control-label']) !!}
+
+                            </div>
+                            <div class="col-xs-8 form-group">
+                            {!! Form::text('dna_pcr_not_reason', old('dna_pcr_not_reason'), ['class' => 'form-control', 'placeholder' => '']) !!}
+
+                            </div>
+                    </div>
+
                     <!-- dna test  -->
                     <div class="row" id="dnaTestResult">
                             <div class="col-xs-12">
@@ -606,9 +514,9 @@
                     {!! Form::close() !!}
                     </div>
                     <div class="col-xs-6 justify-content-center">
-                    <a class="btn btn-link" href="/patients/{{$patient->id}}/page4"> <i class="fa fa-backward"></i>  </a>
-                    <a  class="btn disabled" href="/patients/{{$patient->id}}/page"> page 5</a>
-                 <a  id="nextPage" class="btn" href="/patients/{{$patient->id}}/page6"> <i class="fa fa-forward"></i> </a>          
+                    <a class="btn btn-link" href="/patients/{{$patient->id}}/page5"> <i class="fa fa-backward"></i>  </a>
+                    <a  class="btn disabled" href="/patients/{{$patient->id}}/page"> page 6</a>
+                 <a  id="nextPage" class="btn" href="/patients/{{$patient->id}}/page7"> <i class="fa fa-forward"></i> </a>          
                     </div>
                     <div class="col-xs-2">
                     <a href="/patients"  class="btn btn-sm btn-default text-muted">   <i class="fa fa-list text-muted"></i> Back </a>
